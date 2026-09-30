@@ -1,17 +1,14 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
+import { RiffleLoader } from "@/components/RiffleLoader";
 
-/** Thin top bar that starts the moment an internal link is clicked and finishes when the
- *  new route has rendered, so slow pages never look like a dead click. */
+/** Riffle-shuffle loader that appears the moment an internal link is clicked and goes away
+ *  when the new route has rendered, so slow pages never look like a dead click. */
 export function NavProgress() {
   const pathname = usePathname();
   const [state, setState] = useState<"idle" | "loading" | "done">("idle");
-  const [pct, setPct] = useState(0);
-  const timer = useRef<ReturnType<typeof setInterval> | null>(null);
   const hide = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const stop = () => { if (timer.current) clearInterval(timer.current); timer.current = null; };
 
   useEffect(() => {
     const onClick = (e: MouseEvent) => {
@@ -22,23 +19,20 @@ export function NavProgress() {
       if (url.origin !== location.origin) return;
       if (url.pathname === location.pathname && url.search === location.search) return;
       if (hide.current) clearTimeout(hide.current);
-      stop();
-      setState("loading"); setPct(8);
-      // creep toward 90% and wait there for the route
-      timer.current = setInterval(() => setPct((p) => p + (90 - p) * 0.08), 200);
+      setState("loading");
     };
     document.addEventListener("click", onClick, true);
-    return () => { document.removeEventListener("click", onClick, true); stop(); };
+    return () => document.removeEventListener("click", onClick, true);
   }, []);
 
   useEffect(() => {
-    // Route committed. A loading.tsx skeleton commits immediately, so keep the bar going
+    // Route committed. A loading.tsx skeleton commits immediately, so keep the loader going
     // until the skeleton (aria-busy) has been replaced by the real page.
     if (state !== "loading") return;
     const poll = setInterval(() => {
       if (document.querySelector('[aria-busy="true"]')) return;
-      clearInterval(poll); stop(); setPct(100); setState("done");
-      hide.current = setTimeout(() => { setState("idle"); setPct(0); }, 350);
+      clearInterval(poll); setState("done");
+      hide.current = setTimeout(() => setState("idle"), 250);
     }, 100);
     return () => clearInterval(poll);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -46,9 +40,12 @@ export function NavProgress() {
 
   if (state === "idle") return null;
   return (
-    <div aria-hidden="true" className="pointer-events-none fixed inset-x-0 top-0 z-[60] h-0.5">
-      <div className={`h-full bg-lime-400 shadow-[0_0_8px_rgba(163,230,53,0.7)] transition-[width,opacity] duration-200 ${state === "done" ? "opacity-0" : "opacity-100"}`}
-        style={{ width: `${pct}%` }} />
+    <div
+      className={`pointer-events-none fixed inset-x-0 top-16 z-[60] flex justify-center transition-opacity duration-200 ${state === "done" ? "opacity-0" : "opacity-100"}`}
+    >
+      <div className="rounded-lg border border-white/10 bg-zinc-900/90 px-4 py-2 shadow-lg backdrop-blur">
+        <RiffleLoader size="sm" withText />
+      </div>
     </div>
   );
 }

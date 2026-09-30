@@ -9,7 +9,7 @@ export interface BrowseItem {
   themeCount: number;
 }
 export interface BrowseParams {
-  colors: string;              // letters from WUBRG, "" = any
+  colors: string;              // letters from WUBRG, "" = any, "C" = colorless only
   mode: "within" | "exact";
   tag?: string;
   q?: string;
@@ -32,7 +32,9 @@ export async function browse(p: BrowseParams): Promise<{ items: BrowseItem[]; ne
   const arg = (v: unknown) => (args.push(v), `$${args.length}`);
 
   const cs = parseColors(p.colors);
-  if (cs.length || p.mode === "exact") {
+  if (/c/i.test(p.colors) && !cs.length) {
+    where.push("m.ci_mask = 0");   // colorless identity
+  } else if (cs.length || p.mode === "exact") {
     const m = arg(maskOf(cs));
     where.push(p.mode === "exact" ? `m.ci_mask = ${m}::int` : `(m.ci_mask & ~${m}::int) = 0`);
   }

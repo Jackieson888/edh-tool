@@ -17,7 +17,7 @@ const COLOR_NAMES: Record<string, string> = {
 const pct = (x: number, d = 0) => `${(x * 100).toFixed(d)}%`;
 
 /** Single-hue chart color (dataviz slot 1, dark step; passes the palette validator on the dark surface). */
-const STYLE = `.viz{--bar:#3987e5;--track:rgb(255 255 255/.07);--warn:#fbbf24;--good:#86efac}`; // the site is dark-only
+const STYLE = `.viz{--bar:#9ae600;--track:rgb(255 255 255/.07);--warn:#fbbf24;--good:#86efac}`; // the site is dark-only
 
 function Card({
   title,
@@ -327,7 +327,7 @@ export function AnalyticsPanel({
     <section className="space-y-4">
       <style>{STYLE}</style>
       <div className="flex flex-wrap items-baseline justify-between gap-2">
-        <h2 className="text-lg font-semibold">Deck analytics</h2>
+        <h2 className="text-lg font-semibold">Deck Analytics</h2>
         <span className="text-xs text-zinc-500">
           {a.total} cards counted (commander excluded)
           {shortDeck && ": odds assume the deck you have so far"}

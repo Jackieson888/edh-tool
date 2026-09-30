@@ -21,6 +21,10 @@
     "./analytics": {
       "types": "./analytics.d.ts",
       "default": "./analytics.mjs"
+    },
+    "./cuts": {
+      "types": "./cuts.d.ts",
+      "default": "./cuts.mjs"
     }
   }
 }

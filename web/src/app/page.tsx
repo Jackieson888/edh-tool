@@ -19,8 +19,8 @@ export default async function Home() {
           Explore each commander through flavorful, unique archetypes, find the
           cards that bring your chosen theme to life, then build and analyze
           your deck right in the browser. Use it alongside EDHREC and Scryfall:
-          they show what&apos;s popular, and EDH Tool helps you build a deck
-          that feels like yours.
+          they&apos;ll show what&apos;s popular, and edh-tool helps you build a
+          deck that feels like yours.
         </p>
       </section>
       <hr className="opacity-10" />

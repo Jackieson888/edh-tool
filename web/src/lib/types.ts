@@ -82,3 +82,20 @@ export interface AnalyzeResponse {
   recs: { themeId: string; eligible: number; picks: RecCard[] }[];
   cardThemes: Record<string, string>;   // oracle_id → name of the theme that card fits best
 }
+
+export interface CutsRequest {
+  commander: string;
+  cards: { oracle_id: string; qty: number; board: Board }[];
+  theme: ThemeState;
+}
+
+export interface CutsResponse {
+  total: number;                // cards in the main board besides the commander
+  limit: number;                // 99
+  over: number;
+  themes: string[];             // names of the themes the deck is going for
+  flagged: number;
+  overfullRoles: { id: string; label: string; count: number; max: number }[];
+  shortRoles: { id: string; label: string; count: number; min: number }[];
+  cuts: (import("@edh-tool/engine/cuts").CutCandidate & { image?: string })[];
+}

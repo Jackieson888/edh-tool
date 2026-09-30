@@ -43,7 +43,7 @@ const CARD_COLS = `c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.types
   c.oracle_text, c.power, c.toughness, c.color_identity, c.commander_legal, c.commander_eligible,
   c.edhrec_rank, c.game_changer, c.price_usd, c.image, c.image_small, c.art_crop, c.artist, c.scryfall_uri`;
 // the scoring pool only needs what scoring and the pick tiles use
-const POOL_COLS = `c.oracle_id, c.name, c.mana_cost, c.type_line, c.types, c.supertypes, c.color_identity,
+const POOL_COLS = `c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.types, c.supertypes, c.color_identity,
   c.commander_legal, c.edhrec_rank, c.game_changer, c.price_usd, c.image, c.scryfall_uri, c.quality`;
 
 const clean = <T extends object>(row: T): T =>

@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useCallback, useEffect, useRef, useState } from "react";
 import { ColorPips } from "@/components/ColorPips";
+import { ManaSymbol } from "@/components/Mana";
 import { COLOR_NAMES, tagLabel } from "@/lib/labels";
 
 interface Item {
@@ -12,14 +13,8 @@ interface Item {
   art_crop: string | null;
   themeCount: number;
 }
-const COLORS = ["W", "U", "B", "R", "G"];
-const RING: Record<string, string> = {
-  W: "bg-amber-100 text-amber-900",
-  U: "bg-sky-500 text-sky-950",
-  B: "bg-zinc-700 text-zinc-100",
-  R: "bg-red-500 text-red-950",
-  G: "bg-emerald-600 text-emerald-50",
-};
+// "C" = colorless only; it can't be combined with the real colors.
+const COLORS = ["W", "U", "B", "R", "G", "C"];
 
 export function CommanderBrowser({
   tags,
@@ -98,8 +93,13 @@ export function CommanderBrowser({
 
   const toggle = (c: string) =>
     setColors((cur) =>
-      cur.includes(c) ? cur.filter((x) => x !== c) : [...cur, c],
+      cur.includes(c)
+        ? cur.filter((x) => x !== c)
+        : c === "C"
+          ? ["C"]
+          : [...cur.filter((x) => x !== "C"), c],
     );
+  const colorless = colors.includes("C");
 
   return (
     <section className="space-y-5">
@@ -110,39 +110,40 @@ export function CommanderBrowser({
               key={c}
               onClick={() => toggle(c)}
               aria-pressed={colors.includes(c)}
-              title={COLOR_NAMES[c]}
-              className={`h-8 w-8 rounded-full text-xs font-bold transition ${RING[c]} ${colors.includes(c) ? "ring-2 ring-lime-400" : "opacity-40 hover:opacity-70"}`}
+              title={COLOR_NAMES[c] ?? "Colorless"}
+              aria-label={COLOR_NAMES[c] ?? "Colorless"}
+              className={`rounded-full text-2xl leading-none transition ${colors.includes(c) ? "ring-2 ring-lime-400 ring-offset-2 ring-offset-zinc-950" : "opacity-40 hover:opacity-70"}`}
             >
-              {c}
+              <ManaSymbol symbol={c} decorative />
             </button>
           ))}
+          <select
+            value={mode}
+            onChange={(e) => setMode(e.target.value as "within" | "exact")}
+            disabled={colorless}
+            title={
+              colorless
+                ? "Colorless commanders have no colors to match"
+                : undefined
+            }
+            className="rounded-lg border border-white/10 bg-zinc-900 px-2 py-1.5 ml-2 text-sm disabled:opacity-40"
+          >
+            <option value="within">At Most</option>
+            <option value="exact">Exactly</option>
+          </select>
         </div>
-        <select
-          value={mode}
-          onChange={(e) => setMode(e.target.value as "within" | "exact")}
-          className="rounded-lg border border-white/10 bg-zinc-900 px-2 py-1.5 text-sm"
-        >
-          <option value="within">Within these colors</option>
-          <option value="exact">Exactly these colors</option>
-        </select>
         <select
           value={tag}
           onChange={(e) => setTag(e.target.value)}
           className="rounded-lg border border-white/10 bg-zinc-900 px-2 py-1.5 text-sm"
         >
-          <option value="">Any theme tag</option>
+          <option value="">All Tags</option>
           {tags.map((t) => (
             <option key={t.tag} value={t.tag}>
               {tagLabel(t.tag)} ({t.count})
             </option>
           ))}
         </select>
-        <input
-          value={q}
-          onChange={(e) => setQ(e.target.value)}
-          placeholder="Search by name"
-          className="min-w-40 flex-1 rounded-lg border border-white/10 bg-zinc-900 px-3 py-1.5 text-sm"
-        />
         <label className="flex items-center gap-2 text-sm text-zinc-400">
           <input
             type="checkbox"
