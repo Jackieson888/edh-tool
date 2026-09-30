@@ -35,6 +35,12 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               materials used are property of Wizards of the Coast. ©Wizards of
               the Coast LLC.
             </p>
+            <p>
+              Built by{" "}
+              <a className="underline" href="https://jackson-schacher.com">
+                Jackson Schacher
+              </a>
+            </p>
           </div>
         </footer>
       </body>
