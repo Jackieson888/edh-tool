@@ -228,7 +228,7 @@ export function DeckBuilder({ id }: { id: string }) {
                 state={deck.theme}
                 onChange={(s) => setTheme(deck.id, s)}
               />
-              {cuts.data && mainIds.length > 1 && (
+              {cuts.data && cuts.data.total >= 90 && (
                 <CutSuggestions
                   data={cuts.data}
                   loading={cuts.loading}

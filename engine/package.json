@@ -25,6 +25,10 @@
     "./cuts": {
       "types": "./cuts.d.ts",
       "default": "./cuts.mjs"
+    },
+    "./starter": {
+      "types": "./starter.d.ts",
+      "default": "./starter.mjs"
     }
   }
 }
