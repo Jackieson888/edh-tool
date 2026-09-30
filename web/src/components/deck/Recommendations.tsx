@@ -1,6 +1,7 @@
 "use client";
 import { CardImage } from "@/components/CardImage";
 import { TagChip } from "@/components/TagChip";
+import { SplitAddButton } from "@/components/deck/SplitAddButton";
 import { tagLabel } from "@/lib/labels";
 import type { AnalyzeResponse, Board } from "@/lib/types";
 
@@ -47,16 +48,14 @@ export function Recommendations({ data, loading, onAdd, onReroll }: {
                         {p.matched.map((m) => <TagChip key={m.tag} tag={m.tag} strong={m.anchor} />)}
                       </div>
                     )}
-                    <div className="mt-auto flex gap-1.5">
-                      <button type="button" onClick={() => onAdd(p.oracle_id, "main")}
-                        className="flex-1 rounded-lg bg-lime-400 px-2 py-1.5 text-xs font-medium text-zinc-950 hover:bg-lime-300">
-                        {p.inMaybe ? "Move to deck" : "Add to deck"}
-                      </button>
-                      {!p.inMaybe && (
-                        <button type="button" onClick={() => onAdd(p.oracle_id, "maybe")}
-                          className="flex-1 rounded-lg border border-white/15 px-2 py-1.5 text-xs hover:border-white/30">
-                          Maybeboard
+                    <div className="mt-auto">
+                      {p.inMaybe ? (
+                        <button type="button" onClick={() => onAdd(p.oracle_id, "main")}
+                          className="w-full rounded-lg bg-lime-400 px-2 py-1.5 text-xs font-medium text-zinc-950 hover:bg-lime-300">
+                          Move to deck
                         </button>
+                      ) : (
+                        <SplitAddButton onAdd={(board) => onAdd(p.oracle_id, board)} />
                       )}
                     </div>
                   </li>

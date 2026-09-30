@@ -1,6 +1,6 @@
 """Load the catalog into Postgres (Neon or local).
 
-    DATABASE_URL=postgres://... python -m pipeline.load_db [--schema-only] [--no-art]
+    DATABASE_URL=postgres://... python -m pipeline.load_db   # prefers DATABASE_URL_UNPOOLED (Neon direct connection) [--schema-only] [--no-art]
 
 Applies db/schema.sql, then refreshes the catalog tables from the pipeline files. Cards are
 upserted (deck_cards reference them, so they are never truncated); tags, art and commanders
@@ -47,7 +47,7 @@ def copy_rows(cur, table: str, cols: list[str], rows) -> int:
 def main(argv=None):
     load_dotenv()
     ap = argparse.ArgumentParser()
-    ap.add_argument("--url", default=os.environ.get("DATABASE_URL"))
+    ap.add_argument("--url", default=os.environ.get("DATABASE_URL_UNPOOLED") or os.environ.get("DATABASE_URL"))
     ap.add_argument("--cards", type=Path, default=DATA / "cards.jsonl")
     ap.add_argument("--tags", type=Path, nargs="+", default=[DATA / "card_tags.jsonl"])
     ap.add_argument("--themes", type=Path, default=DATA / "commander_themes.jsonl")
@@ -114,8 +114,8 @@ def main(argv=None):
                 if a["oracle_id"] in by_id and a["illustration_id"] not in seen:
                     seen.add(a["illustration_id"])
                     art_rows.append((a["illustration_id"], a["oracle_id"], a.get("face"), a.get("artist"),
-                                     a.get("set"), a.get("image")))
-            copy_rows(cur, "art", ["illustration_id", "oracle_id", "face", "artist", "set_code", "image"], art_rows)
+                                     a.get("set"), a.get("image"), len(art_rows)))
+            copy_rows(cur, "art", ["illustration_id", "oracle_id", "face", "artist", "set_code", "image", "seq"], art_rows)
             n = copy_rows(cur, "art_tags",
                           ["illustration_id", "mood", "setting", "palette", "lighting", "subject", "motifs"],
                           [(t["illustration_id"], t.get("mood") or [], t.get("setting") or [], t.get("palette") or [],

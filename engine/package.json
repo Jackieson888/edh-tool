@@ -17,6 +17,10 @@
     "./decklist": {
       "types": "./decklist.d.ts",
       "default": "./decklist.mjs"
+    },
+    "./analytics": {
+      "types": "./analytics.d.ts",
+      "default": "./analytics.mjs"
     }
   }
 }

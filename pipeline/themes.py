@@ -1,8 +1,13 @@
 """Commander theme generation: build requests, validate output, check viability.
 
-    python -m pipeline.themes build   [--only "Agent Frank Horrigan"]
-    python -m pipeline.themes submit | collect <batch_id>
-    python -m pipeline.themes ingest  <model_output.json>
+    python -m pipeline.themes build   [--only "Agent Frank Horrigan"] [--ids-file ids.json] [--all]
+    python -m pipeline.themes submit  [--requests FILE]
+    python -m pipeline.themes status  <batch_id>
+    python -m pipeline.themes collect <batch_id>      # saves raw answers, then ingests
+    python -m pipeline.themes ingest  <model_output.json | theme_results.<id>.jsonl> [--quiet]
+
+`build` skips commanders that already have themes in --out (use --all to redo them) and, with
+--ids-file, keeps only the oracle ids listed. `ingest` merges into --out by oracle_id.
 
 Validation (every theme must pass or the commander is queued for regeneration):
   - every tag is in the vocab (or a real `typal:<Type>`)
@@ -188,17 +193,41 @@ def motif_matches(motif: str, label: str) -> bool:
     return re.search(rf"(^|[\s(]){re.escape(motif)}($|[\s)])", label) is not None
 
 
+def extract_theme_json(text: str):
+    """The model's theme object: the last fenced block if there is one, else the outermost {...}."""
+    fenced = re.findall(r"```(?:json)?\s*(.*?)```", text, re.S)
+    body = fenced[-1] if fenced else text[text.find("{"): text.rfind("}") + 1]
+    return json.loads(body)
+
+
+_LEGAL_CACHE: dict = {}
+
+
+def _legal_labels(commander: dict, cards: list[dict], card_motifs: dict) -> list[set]:
+    """Motif label sets of every card legal for the commander, cached per color identity."""
+    key = (id(cards), tuple(sorted(commander["color_identity"])))
+    if key not in _LEGAL_CACHE:
+        ci = set(commander["color_identity"])
+        _LEGAL_CACHE[key] = [card_motifs.get(c["oracle_id"], set()) for c in cards
+                             if c["commander_legal"] and set(c["color_identity"]) <= ci]
+    return _LEGAL_CACHE[key]
+
+
 def check_motifs(themes: list[dict], commander: dict, cards: list[dict], card_motifs: dict,
                  min_cards: int, errors: list) -> None:
-    """Drop art motifs too few legal cards carry; record supply (distinct cards) for the rest."""
-    legal = [card_motifs.get(c["oracle_id"], set()) for c in cards if legal_for(c, commander)]
+    """Drop art motifs too few legal cards carry; record supply (distinct cards) for the rest.
+    Each motif is matched against the distinct labels once, then cards are counted by set overlap
+    (the naive card x label x motif loop took hours over the full pool)."""
+    legal = _legal_labels(commander, cards, card_motifs)
+    distinct = set().union(*legal) if legal else set()
     for th in themes:
         art = th.get("art")
         if not art or not art.get("motifs"):
             continue
         kept, supply = [], {}
         for m in art["motifs"]:
-            n = sum(any(motif_matches(m, lab) for lab in labs) for labs in legal)
+            hit = {lab for lab in distinct if motif_matches(m, lab)}
+            n = sum(1 for labs in legal if labs & hit)
             supply[m] = n
             if n >= min_cards:
                 kept.append(m)
@@ -256,6 +285,16 @@ def ensure_min_themes(themes: list[dict], errors: list, commander: dict, cmd_tag
        `relaxed` (best first); 2) fallback: broad themes generated from the pool's supply."""
     need = tcfg["min_themes_per_commander"]
     usable = [t for t in themes if t["status"] == "ok"]
+    # A commander's signature (core) archetype can be real but thinly supplied, e.g. Aurelia's extra
+    # combats. Keep it as a "relaxed" theme (the site marks it "broad picks, looser fit") instead of
+    # dropping it, as long as it has at least `viability_relaxed_min_cards` cards. Stretch themes
+    # don't get this: a thin stretch is just filler.
+    for t in themes:
+        if (t["status"] == "rejected_unviable" and t.get("kind") == "core"
+                and t["viable_cards"] >= tcfg["viability_relaxed_min_cards"]):
+            t["status"] = "relaxed"
+            usable.append(t)
+            errors.append(f"{t['name']}: core theme kept as relaxed ({t['viable_cards']} cards)")
     if len(usable) < need:
         rejected = sorted((t for t in themes if t["status"] == "rejected_unviable"),
                           key=lambda t: -t["viable_cards"])
@@ -291,13 +330,16 @@ def check_viability(commander_name: str, themes: list[dict], cards_path: Path, t
 
 def main(argv=None):
     ap = argparse.ArgumentParser()
-    ap.add_argument("cmd", choices=["build", "ingest"])
+    ap.add_argument("cmd", choices=["build", "submit", "status", "collect", "ingest"])
     ap.add_argument("arg", nargs="?")
     ap.add_argument("--cards", type=Path, default=DATA / "cards.jsonl")
     ap.add_argument("--tags", type=Path, default=DATA / "card_tags.jsonl")
     ap.add_argument("--out", type=Path, default=DATA / "commander_themes.jsonl")
     ap.add_argument("--requests", type=Path, default=DATA / "batch" / "theme_requests.jsonl")
     ap.add_argument("--only", nargs="*")
+    ap.add_argument("--ids-file", type=Path, default=None, help="JSON list of oracle ids to build")
+    ap.add_argument("--all", action="store_true", help="build even commanders already in --out")
+    ap.add_argument("--quiet", action="store_true", help="ingest: print only the summary")
     ap.add_argument("--min-cards", type=int, default=None, help="override viability_min_cards (small test pools)")
     ap.add_argument("--art", type=Path, default=DATA / "art.jsonl")
     ap.add_argument("--art-tags", type=Path, default=DATA / "art_tags.jsonl")
@@ -314,6 +356,15 @@ def main(argv=None):
     ctypes = creature_types_from(cards)
     commanders = [c for c in cards if c["commander_eligible"] and c["oracle_id"] in tags_by_id
                   and (not args.only or c["name"] in args.only)]
+    if args.ids_file:
+        want = set(json.loads(args.ids_file.read_text(encoding="utf-8")))
+        commanders = [c for c in commanders if c["oracle_id"] in want]
+    if args.cmd == "build" and not args.all and args.out.exists():
+        done = {r["oracle_id"] for r in read_jsonl(args.out)}
+        skipped = sum(c["oracle_id"] in done for c in commanders)
+        commanders = [c for c in commanders if c["oracle_id"] not in done]
+        if skipped:
+            print(f"skipping {skipped} commanders already in {args.out.name} (--all to redo)")
     motif_cards = read_jsonl(args.motif_cards) if args.motif_cards else cards
     card_motifs = load_card_motifs(args.art, args.art_tags)
 
@@ -330,9 +381,69 @@ def main(argv=None):
         if len(reqs) == 1:
             print(reqs[0]["params"]["messages"][0]["content"])
 
-    elif args.cmd == "ingest":
-        raw_all = json.loads(Path(args.arg).read_text(encoding="utf-8"))
-        raw_all = raw_all if isinstance(raw_all, list) else [raw_all]
+    elif args.cmd == "submit":
+        import datetime as dt
+        import anthropic
+        reqs = read_jsonl(args.requests)
+        batch = anthropic.Anthropic().messages.batches.create(requests=reqs)
+        print(f"submitted batch {batch.id} ({len(reqs)} requests)")
+        with open(DATA / "batch" / "batches.log", "a", encoding="utf-8") as f:
+            f.write(f"{dt.datetime.now().isoformat(timespec='seconds')}\t{batch.id}\t{args.requests}\t{len(reqs)}\n")
+        print(f"check it with:  python -m pipeline.themes status {batch.id}")
+
+    elif args.cmd == "status":
+        import anthropic
+        b = anthropic.Anthropic().messages.batches.retrieve(args.arg)
+        c = b.request_counts
+        print(f"{b.id}: {b.processing_status} | processing {c.processing}, succeeded {c.succeeded}, "
+              f"errored {c.errored}, canceled {c.canceled}, expired {c.expired}")
+        if b.processing_status == "ended":
+            print(f"collect with:   python -m pipeline.themes collect {b.id}")
+
+    elif args.cmd == "collect":
+        import anthropic
+        client = anthropic.Anthropic()
+        b = client.messages.batches.retrieve(args.arg)
+        if b.processing_status != "ended":
+            raise SystemExit(f"batch {b.id} is still {b.processing_status}; try again later")
+        saved, usage, failed = [], collections.Counter(), []
+        for r in client.messages.batches.results(args.arg):
+            if r.result.type != "succeeded":
+                failed.append(r.custom_id)
+                continue
+            m = r.result.message
+            u = m.usage
+            usage.update(input=u.input_tokens, output=u.output_tokens,
+                         cache_write=u.cache_creation_input_tokens or 0, cache_read=u.cache_read_input_tokens or 0)
+            saved.append({"custom_id": r.custom_id, "type": "succeeded", "stop_reason": m.stop_reason,
+                          "text": "".join(x.text for x in m.content if x.type == "text")})
+        raw = DATA / "batch" / f"theme_results.{args.arg}.jsonl"
+        write_jsonl(raw, saved)
+        (DATA / "batch" / f"theme_results.{args.arg}.usage.json").write_text(
+            json.dumps({"requests": len(saved), "failed": failed, **usage}, indent=1), encoding="utf-8")
+        print(f"{len(saved)} answers saved -> {raw.name}" + (f"; {len(failed)} failed: {failed[:5]}" if failed else ""))
+        print(f"tokens: {dict(usage)}")
+        args.arg = str(raw)
+        args.cmd = "ingest"
+
+    if args.cmd == "ingest":
+        src = Path(args.arg)
+        if src.suffix == ".jsonl":
+            raw_all = []
+            for row in read_jsonl(src):
+                if row.get("type") != "succeeded":
+                    continue
+                try:
+                    d = extract_theme_json(row["text"])
+                except (json.JSONDecodeError, ValueError):
+                    print(f"unreadable answer for {row['custom_id']}")
+                    continue
+                if isinstance(d, dict):
+                    d.setdefault("oracle_id", row["custom_id"].split("-", 1)[1])
+                    raw_all.append(d)
+        else:
+            raw_all = json.loads(src.read_text(encoding="utf-8"))
+            raw_all = raw_all if isinstance(raw_all, list) else [raw_all]
         min_cards = args.min_cards or tcfg["viability_min_cards"]
         rows = []
         for raw in raw_all:
@@ -361,15 +472,20 @@ def main(argv=None):
                          "status": status, "errors": errors,
                          "meta": {"model": tcfg["model"], "vocab_version": vocab["version"],
                                   "prompt_hash": prompt_hash(system_prompt("commander_themes", vocab))}})
-            print(f"{cmd['name']}: {status}")
-            for th in themes:
+            print(f"{cmd['name']}: {status}") if not args.quiet else None
+            for th in themes if not args.quiet else []:
                 tags = " · ".join(f"{t['tag']}({t['weight']})" for t in th["tags"])
                 print(f"  [{th['kind']:7}] {th['name']:<28} {th['viable_cards']:>3} viable  {th['status']:<18} {tags}")
                 if th.get("art_supply"):
                     print("            art motifs: " + ", ".join(f"{m} ({n} cards)" for m, n in th["art_supply"].items()))
-            for e in errors:
+            for e in errors if not args.quiet else []:
                 print(f"  ! {e}")
-        write_jsonl(args.out, rows)
+        # merge by oracle_id: new rows replace old ones, everything else in --out is kept
+        merged = {r["oracle_id"]: r for r in (read_jsonl(args.out) if args.out.exists() else [])}
+        merged.update({r["oracle_id"]: r for r in rows})
+        write_jsonl(args.out, list(merged.values()))
+        by_status = collections.Counter(r["status"] for r in rows)
+        print(f"ingested {len(rows)} commanders {dict(by_status)}; {args.out.name} now has {len(merged)}")
 
 
 if __name__ == "__main__":

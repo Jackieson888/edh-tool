@@ -8,6 +8,7 @@ export interface CardLite {
   type_line?: string;
   color_identity: string[];
   image?: string;
+  art_crop?: string;      // wide art for list headers
   commander_eligible?: boolean;
   game_changer?: boolean;
   any_number?: boolean;   // "A deck can have any number of cards named …"

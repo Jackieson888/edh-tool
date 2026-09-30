@@ -35,3 +35,9 @@ body {
 .ms-ci {
   box-shadow: inset 0 0 1px #fff, 0 0 0 1px rgb(255 255 255 / 0.22);
 }
+
+/* The font's black outline glyph (::before) doesn't line up with the colored disc; the disc
+   plus the faint ring above already read as the indicator, so hide the glyph. */
+.ms-ci::before {
+  opacity: 0;
+}

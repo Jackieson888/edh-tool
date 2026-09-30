@@ -64,6 +64,8 @@ CREATE TABLE IF NOT EXISTS art (
   image            text
 );
 CREATE INDEX IF NOT EXISTS art_by_card ON art (oracle_id);
+-- source-file order: keeps the choice between equally good printings stable
+ALTER TABLE art ADD COLUMN IF NOT EXISTS seq integer NOT NULL DEFAULT 0;
 
 CREATE TABLE IF NOT EXISTS art_tags (
   illustration_id uuid PRIMARY KEY REFERENCES art ON DELETE CASCADE,

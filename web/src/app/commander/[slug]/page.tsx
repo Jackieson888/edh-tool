@@ -4,20 +4,22 @@ import { notFound } from "next/navigation";
 import { ColorPips } from "@/components/ColorPips";
 import { CardImage } from "@/components/CardImage";
 import { TagChip } from "@/components/TagChip";
-import { getCommander, getVocab, listCommanders } from "@/lib/data";
+import { getCommanderSummary, getVocab } from "@/lib/data";
 
+// Rendered on first visit, then cached; the catalog only changes when the loader runs.
+export const revalidate = 3600;
 export async function generateStaticParams() {
-  return (await listCommanders()).map((c) => ({ slug: c.slug }));
+  return [];
 }
 
 export async function generateMetadata({ params }: PageProps<"/commander/[slug]">) {
-  const data = await getCommander((await params).slug);
+  const data = await getCommanderSummary((await params).slug);
   return { title: data?.commander.name ?? "Commander" };
 }
 
 export default async function CommanderPage({ params }: PageProps<"/commander/[slug]">) {
   const { slug } = await params;
-  const [data, vocab] = await Promise.all([getCommander(slug), getVocab()]);
+  const [data, vocab] = await Promise.all([getCommanderSummary(slug), getVocab()]);
   if (!data) notFound();
   const { commander, themes } = data;
   const core = themes.filter((t) => t.kind === "core");
@@ -34,11 +36,13 @@ export default async function CommanderPage({ params }: PageProps<"/commander/[s
           </div>
           <p className="max-w-prose whitespace-pre-line text-zinc-400">{commander.oracle_text}</p>
           <div className="flex flex-wrap gap-1.5">
-            {[...data.entry.tags.values()].map((t) => (
+            {data.tags.map((t) => (
               <TagChip key={t.tag} tag={t.tag} title={vocab.tags[t.tag]?.definition} />
             ))}
           </div>
-          <p className="text-sm text-zinc-500">How do you want this deck to play?</p>
+          <p className="text-sm text-zinc-500">
+            {themes.length ? "How do you want this deck to play?" : "Themes for this commander are coming soon."}
+          </p>
         </div>
       </section>
 

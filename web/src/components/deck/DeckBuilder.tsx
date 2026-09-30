@@ -7,11 +7,13 @@ import { CommanderSuggestions } from "@/components/deck/CommanderSuggestions";
 import { DeckCards } from "@/components/deck/DeckCards";
 import { ExportPanel } from "@/components/deck/ExportPanel";
 import { Recommendations } from "@/components/deck/Recommendations";
+import { AnalyticsPanel } from "@/components/deck/AnalyticsPanel";
 import { ThemePanel } from "@/components/deck/ThemePanel";
 import { addCard, openedDeck, renameDeck, setCommanders, setTheme, useDeck } from "@/lib/deckStore";
 import { commanderColors, mainCount } from "@/lib/deckView";
 import { rememberCards, useCards } from "@/lib/useCards";
 import { useAnalysis } from "@/lib/useAnalysis";
+import { useStats } from "@/lib/useStats";
 import type { CardLite } from "@/lib/types";
 
 const isCommander = (c: CardLite) => !!c.commander_eligible;
@@ -22,6 +24,7 @@ export function DeckBuilder({ id }: { id: string }) {
   const [tab, setTab] = useState<"main" | "maybe">("main");
   const [changing, setChanging] = useState(false);
   const analysis = useAnalysis(deck, reroll);
+  const stats = useStats(deck);
 
   useEffect(() => { openedDeck(id); }, [id]);
 
@@ -115,6 +118,9 @@ export function DeckBuilder({ id }: { id: string }) {
         </div>
         <DeckCards deck={deck} board={tab} cards={cards} colors={colors} themeOf={analysis.data?.cardThemes} />
       </section>
+
+      {deck.cards.some((c) => c.board === "main") && <AnalyticsPanel data={stats.data} error={stats.error} commanders={deck.commanders}
+        exclude={deck.cards.map((c) => c.oracle_id)} onAdd={(c, board) => onAdd(c, board)} />}
 
       {deck.commanders.length === 0 ? (
         <p className="rounded-xl border border-dashed border-white/15 p-6 text-sm text-zinc-400">

@@ -14,3 +14,7 @@ __pycache__/
 # web
 node_modules/
 web/.next/
+.neon
+
+# archived clutter (recoverable, not needed to run)
+_archive/

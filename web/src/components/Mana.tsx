@@ -162,7 +162,7 @@ export function ColorIndicator({
     <i
       className={`ms ${colorIndicatorClasses(colors).join(" ")} ${className}`}
       role="img"
-      aria-label={`Color identity: ${names}`}
+      aria-label={`Color Identity: ${names}`}
       title={names}
     />
   );

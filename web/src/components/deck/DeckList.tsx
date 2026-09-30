@@ -1,4 +1,5 @@
 "use client";
+/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
@@ -58,16 +59,23 @@ export function DeckList() {
           {list.map((d) => {
             const count = d.commanders.length + d.cards.filter((c) => c.board === "main").reduce((a, c) => a + c.qty, 0);
             const cmd = d.commanders.map((id) => names.get(id)?.name).filter(Boolean).join(" + ");
+            const hero = d.commanders.map((id) => names.get(id)?.art_crop).find(Boolean);
             return (
-              <li key={d.id} className="flex items-start justify-between gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-4">
-                <Link href={`/decks/${d.id}`} className="min-w-0 flex-1 space-y-1 hover:text-lime-300">
-                  <p className="truncate font-medium">{d.name}</p>
-                  <p className="truncate text-sm text-zinc-400">{cmd || "No commander yet"}</p>
-                  <p className="text-xs text-zinc-500">{count} / 100 cards · edited {new Date(d.updatedAt).toLocaleDateString()}</p>
+              <li key={d.id} className="group relative overflow-hidden rounded-xl border border-white/10 bg-white/[0.03] transition hover:border-lime-400/50">
+                <Link href={`/decks/${d.id}`} className="block">
+                  <div className="relative aspect-[16/7] w-full bg-gradient-to-br from-zinc-800 to-zinc-900">
+                    {hero && <img src={hero} alt="" loading="lazy" className="h-full w-full object-cover opacity-90 transition group-hover:opacity-100" />}
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/90 via-zinc-950/20 to-transparent" />
+                    <p className="absolute inset-x-3 bottom-2 truncate text-sm text-zinc-200">{cmd || "No commander yet"}</p>
+                  </div>
+                  <div className="space-y-0.5 p-3">
+                    <p className="truncate font-medium group-hover:text-lime-300">{d.name}</p>
+                    <p className="text-xs text-zinc-500">{count} / 100 cards · edited {new Date(d.updatedAt).toLocaleDateString()}</p>
+                  </div>
                 </Link>
                 <button type="button" aria-label={`Delete ${d.name}`}
                   onClick={() => { if (confirm(`Delete "${d.name}"? This can't be undone.`)) deleteDeck(d.id); }}
-                  className="rounded px-2 py-1 text-xs text-zinc-500 hover:bg-red-500/10 hover:text-red-300">
+                  className="absolute right-2 top-2 rounded-md bg-zinc-950/70 px-2 py-1 text-xs text-zinc-300 backdrop-blur hover:bg-red-500/30 hover:text-red-200">
                   Delete
                 </button>
               </li>

@@ -1,7 +1,7 @@
 import { DEFAULT_CONFIG } from "@edh-tool/engine";
 import { activeThemeIds, deckRecommendations, deckThemeProfile } from "@edh-tool/engine/deck";
 import { bad, isId, readBody } from "@/lib/api";
-import { getCommanderByOracle } from "@/lib/data";
+import { getCommanderByOracle, withDeckCards } from "@/lib/data";
 import type { AnalyzeRequest, AnalyzeResponse } from "@/lib/types";
 
 const GEM_OBSCURITY = 0.82;   // same bar as the theme page's "Hidden gem" badge
@@ -12,10 +12,11 @@ export async function POST(req: Request) {
   if (!body || !isId(body.commander) || !Array.isArray(body.cards) || body.cards.length > 400) {
     return bad("expected { commander, cards, theme, seed }");
   }
-  const data = await getCommanderByOracle(body.commander);
-  if (!data) return bad("no themes for that commander yet", 404);
+  const base = await getCommanderByOracle(body.commander);
+  if (!base) return bad("no themes for that commander yet", 404);
   const mainIds = body.cards.filter((c) => c?.board === "main" && isId(c.oracle_id)).map((c) => c.oracle_id);
   const maybeIds = body.cards.filter((c) => c?.board === "maybe" && isId(c.oracle_id)).map((c) => c.oracle_id);
+  const data = await withDeckCards(base, [...mainIds, ...maybeIds]); // deck cards outside the slim pool still count as analyzed
   const mode = body.theme?.mode === "pinned" ? "pinned" : "auto";
   const pinned = Array.isArray(body.theme?.pinned) ? body.theme.pinned.filter((x) => typeof x === "string") : [];
 

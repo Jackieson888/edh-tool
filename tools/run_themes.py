@@ -31,7 +31,7 @@ for line in req_path.read_text().splitlines():
     d = json.loads(m[-1] if m else text[text.find("{"):])
     d.setdefault("oracle_id", req["custom_id"].split("-", 1)[1])
     outs.append(d)
-    print(req["custom_id"], msg.stop_reason, msg.usage.output_tokens, file=sys.stderr)
+    print(req["custom_id"], msg.stop_reason, "in", msg.usage.input_tokens, "out", msg.usage.output_tokens, file=sys.stderr)
 raw = ROOT / "data/batch/theme_output.test.json"
 raw.write_text(json.dumps(outs, indent=1))
 subprocess.run([sys.executable, "-m", "pipeline.themes", "ingest", str(raw), "--tags", args.tags,
