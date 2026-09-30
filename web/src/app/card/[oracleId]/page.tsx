@@ -140,8 +140,8 @@ export default async function CardPage({
                   href={`/commander/${s.slug}`}
                   className="flex gap-3 rounded-xl border border-white/10 bg-white/[0.03] p-3 transition hover:border-lime-400/50"
                 >
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   {s.image && (
+                    // eslint-disable-next-line @next/next/no-img-element
                     <img
                       src={s.image}
                       alt=""

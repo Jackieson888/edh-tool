@@ -35,7 +35,6 @@ export function NavProgress() {
       hide.current = setTimeout(() => setState("idle"), 250);
     }, 100);
     return () => clearInterval(poll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pathname, state]);
 
   if (state === "idle") return null;

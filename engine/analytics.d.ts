@@ -3,7 +3,9 @@ export interface AnalyticsCard {
   produced_mana?: string[]; game_changer?: boolean; price_usd?: number | string | null; tags?: string[];
 }
 export interface AnalyticsRow { card: AnalyticsCard; qty: number }
-export interface RoleStat { id: string; label: string; tags: string[]; min: number; max: number; count: number; status: "low" | "ok" | "high" }
+export interface RoleStat { id: string; label: string; tags: string[]; min: number; max: number; count: number; status: "low" | "ok" | "high";
+  /** Not yet produced by the engine; the panel treats it as optional. */
+  cards?: { oracle_id: string; name: string; qty: number; cmc?: number }[] }
 export interface DeckAnalytics {
   total: number; lands: number; nonlands: number;
   curve: { mv: number; label: string; count: number }[];
@@ -11,6 +13,8 @@ export interface DeckAnalytics {
   colors: { color: string; pips: number; pipShare: number; sources: number; landSources: number }[];
   /** Not yet produced by the engine; the panel treats it as optional. */
   sourceTargets?: { color: string; target?: number; status: "low" | "ok" | "high" }[];
+  /** Not yet produced by the engine; the panel treats it as optional. */
+  landSuggestion?: { min: number; max: number; raw: number; formula: string };
   types: { type: string; count: number }[];
   roles: RoleStat[];
   tags: { tag: string; count: number; share: number }[];

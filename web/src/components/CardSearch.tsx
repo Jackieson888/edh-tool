@@ -41,7 +41,7 @@ export function CardSearch({ onPick, placeholder = "Search cards…", filter, cl
       }
     }, 150);
     return () => { clearTimeout(t); ctl.abort(); };
-  }, [q, filter]);
+  }, [q, filter, sections]);
 
   useEffect(() => {
     const close = (e: MouseEvent) => { if (!box.current?.contains(e.target as Node)) setOpen(false); };

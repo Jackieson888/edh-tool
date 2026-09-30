@@ -24,7 +24,7 @@ export function CommanderBrowser({
   const [colors, setColors] = useState<string[]>([]);
   const [mode, setMode] = useState<"within" | "exact">("within");
   const [tag, setTag] = useState("");
-  const [q, setQ] = useState("");
+  const [q] = useState("");
   const [themed, setThemed] = useState(true);
   const [items, setItems] = useState<Item[]>([]);
   const [next, setNext] = useState<string | null>(null);

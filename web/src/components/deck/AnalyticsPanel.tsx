@@ -228,7 +228,7 @@ function RoleRow({
       </button>
       {open && (
         <div className="mt-2 space-y-3 rounded-lg bg-white/[0.03] p-3 text-xs">
-          {r.cards.length ? (
+          {r.cards?.length ? (
             <p className="leading-relaxed text-zinc-300">
               {r.cards.map((c, i) => (
                 <span key={c.oracle_id}>
@@ -244,7 +244,7 @@ function RoleRow({
               No {r.label.toLowerCase()} in the deck yet.
             </p>
           )}
-          {r.cards.length > 0 && (
+          {!!r.cards?.length && (
             <p className="text-[10px] text-zinc-500">
               Small number = mana value.
             </p>
@@ -504,7 +504,7 @@ export function AnalyticsPanel({
                       {t && (
                         <span
                           className="absolute -top-0.5 h-4 border-l-2 border-zinc-200/70"
-                          style={{ left: `${(t.target / top) * 100}%` }}
+                          style={{ left: `${((t.target ?? 0) / top) * 100}%` }}
                         />
                       )}
                     </span>
