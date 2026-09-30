@@ -1,0 +1,80 @@
+# Maps Scryfall Tagger art labels (tagger.scryfall.com, type "illustration") onto
+# our fixed art fields in vocab/art.yaml. A label listed here also matches through
+# its Tagger ancestors (e.g. "ghoul (fallout)" -> zombie -> undead).
+# Tagger is strong on WHAT is depicted (settings, creatures, objects, glow colors)
+# and weak on mood; the optional vision pass fills mood/palette gaps.
+version: 0.1.0
+
+setting:
+  wasteland: [wasteland, fallout (universe)]
+  ruins: [ruin]
+  urban: [city, urban, sewer]
+  village: [village]
+  interior: [indoor]
+  laboratory: [laboratory]
+  factory: [factory, smokestack, machine]
+  battlefield: [battlefield, battle]
+  forest: [forest]
+  jungle: [jungle]
+  swamp: [swamp]
+  plains: [plains, field]
+  desert: [desert]
+  mountains: [mountain, cliff]
+  ice: [snow, ice, glacier]
+  volcanic: [volcano, lava]
+  sea: [ocean]
+  underwater: [underwater]
+  sky: [cloudy sky, blue sky, cloud]
+  underground: [cave, underground, dungeon, sewer]
+  graveyard: [cemetery, tomb]
+  space: [space]
+  none: [neutral background]
+
+lighting:
+  dark: [dark, night]
+  moonlit: [moon, full moon, moonlight]
+  firelit: [fire, torch, candle]
+  glowing: [glow, light from within, glowing eye, green glow, orange glow, blue glow, purple glow, red glow, yellow glow, white glow, pink glow]
+  stormy: [storm, lightning, overcast]
+  bright: [sunlight, blue sky]
+  dim: [mist, smog]
+
+mood:
+  grim: [horror, skeleton, skull, blood, gore, corpse, undead]
+  eerie: [creepy, mist, ghost]
+  melancholy: [sad, crying]
+  whimsical: [cute, cozy]
+  romantic: [love, kiss]
+  sacred: [religion, halo, angel]
+
+palette:
+  green: [green glow, green magic]
+  sickly: [green glow, slime, poison, phyrexian oil, smog]
+  black: [black magic, dark]
+  red: [red glow, red magic, blood, lava]
+  orange: [orange glow, orange magic, fire, lava]
+  blue: [blue glow, blue magic, ocean, underwater]
+  purple: [purple glow, purple magic]
+  gold: [gold, golden glow, yellow glow, yellow magic]
+  white: [white glow, white magic, snow]
+  pink: [pink glow, pink magic]
+  teal: [turquoise glow]
+  monochrome: [monochromatic]
+
+subject:
+  landscape: [no one, panorama]
+  person: [solo, human]
+  group: [two figures, three figures]
+  horde: [army, crowd, swarm, horde, nine figures]
+  structure: [building, tower, castle]
+
+# Never used as motifs: production details, framing, and labels about the identity of
+# depicted people. None of these are an art direction a theme should build around.
+stoplist: [digital painting, artist signature, oil paint, acrylic paint, watercolor,
+           colored pencil (medium), creation date, english text, digital only artwork,
+           japanese exclusive art, magic invitational art, loose lips, dutch angle,
+           right-facing, left-facing, facing forward, solo, two figures, three figures,
+           no one, number, character, planar origin, location, plane, magic card,
+           magic text, art media, perspective, earth, real life location, north america,
+           united states, glyph, signature, pose, hair colors, eye colors, for scale,
+           written language, person of color, lgbtq-plus, male, female]

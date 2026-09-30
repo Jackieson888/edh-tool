@@ -1,0 +1,19 @@
+# Controlled vocabulary for card-art tags. The art tagger (a vision model) may
+# only use these values for mood / setting / palette / lighting / subject, so
+# themes can match on them reliably. `motifs` is free text (short, lowercase)
+# for the long tail: "gas mask", "toxic sludge", "skulls", "teddy bear"...
+version: 0.1.0
+
+mood: [grim, eerie, menacing, melancholy, serene, whimsical, comedic, heroic, triumphant,
+       chaotic, mysterious, sacred, romantic, tense]
+
+setting: [wasteland, ruins, urban, village, interior, laboratory, factory, court, battlefield,
+          forest, jungle, swamp, plains, desert, mountains, ice, volcanic, sea, underwater, sky,
+          underground, graveyard, otherworldly, space, none]
+
+palette: [green, black, red, blue, white, gold, purple, brown, grey, orange, teal, pink,
+          monochrome, neon, pastel, sickly]
+
+lighting: [dark, dim, bright, glowing, firelit, moonlit, stormy]
+
+subject: [creature, person, group, horde, object, structure, landscape, spell_effect, vehicle]

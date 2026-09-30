@@ -1,0 +1,440 @@
+<title>Horrigan Scoring Bench</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a workbench — sticky dial panel on the left, results (picks → variety → full ranking) on the right; stacks on phones. */
+:root {
+  --bg: #eef0ea;          /* bone, leaning moss */
+  --panel: #f8f9f5;
+  --ink: #1d231c;
+  --muted: #5d665a;
+  --line: #d3d8cc;
+  --moss: #3f6b2f;        /* accent: Golgari green */
+  --moss-soft: #dfe9d6;
+  --blight: #6d3f73;      /* payoff / poison purple */
+  --blight-soft: #eadcec;
+  --amber: #9a6a12;
+  --bar-fit: #3f6b2f;
+  --bar-cmd: #6d3f73;
+  --bar-q: #9a6a12;
+  --bar-pop: #2f5d73;
+  --f-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
+  --f-body: "Public Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #141813; --panel: #1b2019; --ink: #e3e8dd; --muted: #97a291; --line: #2e362b;
+  --moss: #8fc274; --moss-soft: #263420; --blight: #c796cd; --blight-soft: #33243a; --amber: #d9a64a;
+  --bar-fit: #8fc274; --bar-cmd: #c796cd; --bar-q: #d9a64a; --bar-pop: #7fb3cc; color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #141813; --panel: #1b2019; --ink: #e3e8dd; --muted: #97a291; --line: #2e362b;
+  --moss: #8fc274; --moss-soft: #263420; --blight: #c796cd; --blight-soft: #33243a; --amber: #d9a64a;
+  --bar-fit: #8fc274; --bar-cmd: #c796cd; --bar-q: #d9a64a; --bar-pop: #7fb3cc; color-scheme: dark; }
+
+* { box-sizing: border-box; }
+body { background: var(--bg); color: var(--ink); font: 14px/1.5 var(--f-body); }
+.wrap { max-width: 1280px; margin: 0 auto; padding-inline: 20px; padding-block: 20px 48px; display: grid; gap: 20px; }
+h1, h2, h3 { font-family: var(--f-display); font-weight: 800; letter-spacing: .01em; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(30px, 5vw, 46px); line-height: 1; text-transform: uppercase; }
+h2 { font-size: 22px; text-transform: uppercase; }
+.label { font: 500 11px/1.2 var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+.mono { font-family: var(--f-mono); font-variant-numeric: tabular-nums; }
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--moss); outline-offset: 2px; }
+
+/* header */
+.head { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: end; justify-content: space-between; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+.cmdr { display: grid; gap: 6px; min-width: 0; }
+.cmdr p { margin: 0; color: var(--muted); max-width: 70ch; font-size: 13px; }
+.cost { font-family: var(--f-mono); font-size: 13px; color: var(--moss); }
+.meta { font-size: 12px; color: var(--muted); text-align: right; }
+
+/* theme tabs */
+.tabs { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; }
+.tab { flex: 0 0 auto; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; padding: 8px 12px; text-align: left; display: grid; gap: 2px; min-width: 150px; }
+.tab .n { font: 800 17px/1.1 var(--f-display); text-transform: uppercase; }
+.tab .k { font: 500 10px var(--f-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.tab[aria-selected="true"] { border-color: var(--moss); box-shadow: inset 0 -3px 0 var(--moss); }
+.theme-info { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.theme-info .pitch { margin: 0; font-size: 15px; flex: 1 1 320px; min-width: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 500 12px var(--f-mono); padding: 2px 8px; border-radius: 3px; background: var(--moss-soft); color: var(--ink); white-space: nowrap; }
+.chip.pay { background: var(--blight-soft); }
+.chip.dim { background: transparent; border: 1px dashed var(--line); color: var(--muted); }
+.chip b { font-weight: 500; color: var(--moss); }
+.art-dir { align-items: center; margin-top: -8px; }
+.art-dir .note { font-size: 12px; }
+.chip.anchor { font-weight: 600; box-shadow: inset 0 0 0 1px var(--moss); }
+
+/* main grid */
+.bench { display: grid; grid-template-columns: 300px minmax(0, 1fr); gap: 24px; align-items: start; }
+@media (max-width: 860px) { .bench { grid-template-columns: 1fr; } }
+.dials { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 12px); background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 16px; display: grid; gap: 14px; }
+@media (max-width: 860px) { .dials { position: static; } }
+.dial { display: grid; gap: 4px; }
+.dial .row { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.dial label { font-weight: 600; font-size: 13px; }
+.dial output { font: 500 13px var(--f-mono); color: var(--moss); }
+.dial small { color: var(--muted); font-size: 12px; line-height: 1.35; }
+.dial input[type=range] { width: 100%; accent-color: var(--moss); }
+.ends { display: flex; justify-content: space-between; font: 500 10px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.group { display: grid; gap: 12px; padding-top: 12px; border-top: 1px solid var(--line); }
+.btns { display: flex; flex-wrap: wrap; gap: 8px; }
+.btn { border: 1px solid var(--ink); background: transparent; padding: 6px 12px; border-radius: 4px; font-weight: 600; font-size: 13px; }
+.btn.primary { background: var(--ink); color: var(--bg); }
+.btn:hover { border-color: var(--moss); }
+.toast { font-size: 12px; color: var(--moss); min-height: 1.2em; }
+
+.results { display: grid; gap: 24px; min-width: 0; }
+section.block { display: grid; gap: 10px; min-width: 0; }
+.block-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px 16px; }
+.seed { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.seed input { width: 130px; padding: 5px 8px; border: 1px solid var(--line); background: var(--panel); border-radius: 4px; font-family: var(--f-mono); font-size: 13px; }
+
+/* picks */
+.picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 10px; }
+.pick { background: var(--panel); border: 1px solid var(--line); border-radius: 6px; padding: 12px; display: grid; gap: 8px; align-content: start; min-width: 0; }
+.pick .top { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 8px; align-items: start; }
+.pick .top h3 { min-width: 0; overflow-wrap: anywhere; }
+.pick h3 { font-size: 18px; line-height: 1.05; text-transform: none; font-weight: 800; }
+.pick .type { font-size: 12px; color: var(--muted); }
+.role { font: 500 10px var(--f-mono); text-transform: uppercase; letter-spacing: .06em; padding: 2px 6px; border-radius: 3px; white-space: nowrap; }
+.role.enabler { background: var(--moss-soft); color: var(--moss); }
+.role.payoff { background: var(--blight-soft); color: var(--blight); }
+.role.both { background: var(--line); color: var(--ink); }
+.pick .facts { display: flex; flex-wrap: wrap; gap: 4px 12px; font: 12px var(--f-mono); color: var(--muted); }
+.gem { color: var(--amber); font-weight: 500; }
+.artfit { color: var(--blight); flex-basis: 100%; }
+
+/* variety */
+.variety { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px; }
+.stat { border-left: 3px solid var(--moss); padding: 4px 0 4px 12px; display: grid; gap: 2px; min-width: 0; }
+.stat .v { font: 800 28px/1 var(--f-display); }
+.stat .d { font-size: 12px; color: var(--muted); }
+.stat.warn { border-color: var(--amber); }
+.exposure { display: grid; gap: 4px; }
+.exp-row { display: grid; grid-template-columns: minmax(0, 1fr) 120px 38px; gap: 8px; align-items: center; font-size: 13px; }
+.exp-row span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.meter { height: 8px; background: var(--line); border-radius: 2px; overflow: hidden; }
+.meter i { display: block; height: 100%; background: var(--moss); }
+
+/* ranking table */
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); }
+table { border-collapse: collapse; width: 100%; min-width: 700px; font-size: 13px; }
+th, td { padding: 7px 10px; text-align: left; border-bottom: 1px solid var(--line); vertical-align: middle; }
+th { font: 500 10px var(--f-mono); text-transform: uppercase; letter-spacing: .08em; color: var(--muted); position: sticky; top: 0; background: var(--panel); }
+td.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; text-align: right; white-space: nowrap; }
+tr.card-row { cursor: pointer; }
+tr.card-row:hover td { background: var(--moss-soft); }
+tr.in-pool td:first-child { box-shadow: inset 3px 0 0 var(--moss); }
+tr.detail td { background: var(--bg); color: var(--muted); font-size: 12.5px; white-space: pre-wrap; }
+.stack { display: flex; height: 10px; width: 150px; border-radius: 2px; overflow: hidden; background: var(--line); }
+.stack i { display: block; height: 100%; }
+.legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--muted); }
+.legend i { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+.note { font-size: 12.5px; color: var(--muted); margin: 0; max-width: 75ch; }
+@media (prefers-reduced-motion: no-preference) { .pick { animation: rise .25s ease-out both; } @keyframes rise { from { transform: translateY(4px); } to { transform: none; } } }
+</style>
+
+<div class="wrap">
+  <header class="head">
+    <div class="cmdr">
+      <span class="label">Test commander · scoring bench v0.1</span>
+      <h1 id="cmdr-name">Agent Frank Horrigan</h1>
+      <span class="cost" id="cmdr-cost"></span>
+      <p id="cmdr-text"></p>
+    </div>
+    <div class="meta" id="meta"></div>
+  </header>
+
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Commander themes"></nav>
+  <div class="theme-info">
+    <p class="pitch" id="pitch"></p>
+    <div class="chips" id="theme-tags"></div>
+  </div>
+  <div class="chips art-dir" id="art-dir"></div>
+
+  <div class="bench">
+    <aside class="dials" aria-label="Scoring weights">
+      <div class="dial">
+        <div class="row"><label for="lambda">Popularity λ</label><output id="lambda-o"></output></div>
+        <input type="range" id="lambda" min="-3" max="5" step="0.25">
+        <div class="ends"><span>Proven picks</span><span>Deep cuts</span></div>
+      </div>
+      <div class="dial">
+        <div class="row"><label for="qexp">Quality weight</label><output id="qexp-o"></output></div>
+        <input type="range" id="qexp" min="0" max="3" step="0.1">
+        <small>Exponent on the tagger's power estimate.</small>
+      </div>
+      <div class="dial">
+        <div class="row"><label for="qfloor">Quality floor</label><output id="qfloor-o"></output></div>
+        <input type="range" id="qfloor" min="0.1" max="0.7" step="0.05">
+        <small>Cards below this are never recommended.</small>
+      </div>
+      <div class="dial">
+        <div class="row"><label for="gemhi">Full gem boost at quality</label><output id="gemhi-o"></output></div>
+        <input type="range" id="gemhi" min="0.4" max="0.95" step="0.05">
+        <small>The deep-cut boost fades out between the floor and this value.</small>
+      </div>
+      <div class="group">
+        <div class="dial">
+          <div class="row"><label for="share">Second-tag share</label><output id="share-o"></output></div>
+          <input type="range" id="share" min="0" max="1" step="0.05">
+          <small>How much each extra theme tag a card hits adds to fit.</small>
+        </div>
+        <div class="dial">
+          <div class="row"><label for="offanchor">Off-anchor penalty</label><output id="offanchor-o"></output></div>
+          <input type="range" id="offanchor" min="0" max="1" step="0.05">
+          <small>Multiplier for cards that miss the theme's main tag.</small>
+        </div>
+        <div class="dial">
+          <div class="row"><label for="cmdw">Commander synergy</label><output id="cmdw-o"></output></div>
+          <input type="range" id="cmdw" min="0" max="1.5" step="0.05">
+          <small>Max bonus for cards that feed or are fed by Horrigan.</small>
+        </div>
+        <div class="dial">
+          <div class="row"><label for="artw">Art match</label><output id="artw-o"></output></div>
+          <input type="range" id="artw" min="0" max="1" step="0.05">
+          <small>Max bonus when a printing's art fits the theme's art direction (Scryfall Tagger labels).</small>
+        </div>
+      </div>
+      <div class="group">
+        <div class="dial">
+          <div class="row"><label for="temp">Sampling temperature</label><output id="temp-o"></output></div>
+          <input type="range" id="temp" min="0.15" max="2" step="0.05">
+          <div class="ends"><span>Top of list</span><span>Spread out</span></div>
+        </div>
+        <div class="dial">
+          <div class="row"><label for="pool">Sample from top</label><output id="pool-o"></output></div>
+          <input type="range" id="pool" min="5" max="60" step="1">
+        </div>
+      </div>
+      <div class="group">
+        <div class="btns">
+          <button class="btn" id="reset" type="button">Reset</button>
+          <button class="btn primary" id="copy" type="button">Copy config</button>
+        </div>
+        <div class="toast" id="toast" role="status"></div>
+      </div>
+    </aside>
+
+    <div class="results">
+      <section class="block" aria-labelledby="picks-h">
+        <div class="block-head">
+          <h2 id="picks-h">What a player sees</h2>
+          <div class="seed">
+            <label class="label" for="seed">Deck seed</label>
+            <input id="seed" value="jackson-01" spellcheck="false">
+            <button class="btn primary" id="reroll" type="button">Show me others</button>
+          </div>
+        </div>
+        <div class="picks" id="picks"></div>
+      </section>
+
+      <section class="block" aria-labelledby="var-h">
+        <div class="block-head"><h2 id="var-h">Variety across 200 players</h2><span class="label">same commander · same theme · different seeds</span></div>
+        <div class="variety" id="variety"></div>
+        <div class="exposure" id="exposure"></div>
+      </section>
+
+      <section class="block" aria-labelledby="rank-h">
+        <div class="block-head">
+          <h2 id="rank-h">Full ranking</h2>
+          <span class="label">score = fit × commander × quality<sup>b</sup> × popularity × art</span>
+        </div>
+        <p class="note">The green edge marks the cards players get sampled from. Fit marked * missed the theme's main tag. Tags are listed strongest first: outlined in green is the theme's main tag, filled tags are other tags this theme uses, and dashed tags are on the card but not part of this theme. Click a row for rules text and commander links.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>#</th><th>Card</th><th>Score</th><th>Fit</th><th>Cmd ×</th><th>Quality</th><th>Pop ×</th><th>Art ×</th><th>EDHREC</th><th>Card tags</th></tr></thead>
+          <tbody id="rank-body"></tbody>
+        </table></div>
+      </section>
+    </div>
+  </div>
+</div>
+
+<script>
+/*__DATA__*/
+</script>
+<script>
+/*__ENGINE__*/
+
+const DATA = window.BENCH_DATA;
+const $ = (id) => document.getElementById(id);
+const index = buildIndex(DATA.cards, DATA.tags, { rankCeiling: DATA.rankCeiling, art: DATA.art, artTags: DATA.artTags });
+const commander = findByName(index, DATA.commander);
+const themes = DATA.themes;
+let themeIdx = 0, reroll = 0, openRow = null;
+
+const DIALS = [
+  ["lambda", ["popularity", "lambda"], (v) => (v > 0 ? "+" : "") + v.toFixed(2)],
+  ["qexp", ["quality", "exponent"], (v) => v.toFixed(1)],
+  ["qfloor", ["quality", "floor"], (v) => v.toFixed(2)],
+  ["gemhi", ["popularity", "gemGate", 1], (v) => v.toFixed(2)],
+  ["share", ["fit", "secondaryShare"], (v) => v.toFixed(2)],
+  ["offanchor", ["fit", "offAnchorPenalty"], (v) => "×" + v.toFixed(2)],
+  ["cmdw", ["commander", "weight"], (v) => "≤×" + (1 + v).toFixed(2)],
+  ["artw", ["art", "weight"], (v) => "≤×" + (1 + v).toFixed(2)],
+  ["temp", ["sampling", "temperature"], (v) => v.toFixed(2)],
+  ["pool", ["candidates", "poolSize"], (v) => String(v)],
+];
+const getPath = (o, p) => p.reduce((a, k) => a[k], o);
+function setPath(o, p, v) { const last = p[p.length - 1]; getPath(o, p.slice(0, -1))[last] = v; }
+
+function readConfig() {
+  const cfg = structuredClone(DEFAULT_CONFIG);
+  cfg.popularity.gemGate = [...DEFAULT_CONFIG.popularity.gemGate];
+  for (const [id, path] of DIALS) setPath(cfg, path, Number($(id).value));
+  cfg.popularity.gemGate[0] = cfg.quality.floor;
+  return cfg;
+}
+function loadDefaults() {
+  for (const [id, path] of DIALS) $(id).value = getPath(DEFAULT_CONFIG, path);
+}
+
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const tagLabel = (t) => t.replace("typal:", "typal: ").replaceAll("_", " ");
+// Every tag on the card, strongest first. Tags this theme uses are filled in
+// (the theme's main tag in bold); the card's other tags are outlined.
+// Which printing we'd show and why (art direction cues it matched)
+function artFact(r, c) {
+  const p = r.parts;
+  if (p.illustration && p.artMatch > 0) {
+    return `<span class="artfit">art: ${esc(p.illustration.set.toUpperCase())} · ${esc(p.illustration.artist ?? "")} · ${p.artHits.map(esc).join(", ")}</span>`;
+  }
+  return c.artist ? `<span>art: ${esc(c.artist)}</span>` : "";
+}
+function tagChips(r, withStrength) {
+  const matched = new Map(r.parts.matched.map((m) => [m.tag, m]));
+  return [...index.get(r.oracle_id).tags.values()]
+    .sort((a, b) => b.strength - a.strength)
+    .map((t) => {
+      const m = matched.get(t.tag);
+      const cls = !m ? "dim" : m.anchor ? "anchor" : "";
+      return `<span class="chip ${cls}" title="${t.role}, strength ${t.strength}">${esc(tagLabel(t.tag))}${withStrength ? " " + t.strength : ""}</span>`;
+    }).join("");
+}
+
+function renderHeader() {
+  const c = commander.card;
+  $("cmdr-cost").textContent = `${c.mana_cost} · ${c.type_line} · ${c.power}/${c.toughness}`;
+  $("cmdr-text").textContent = c.oracle_text.replace(/\s*\([^)]*\)/g, "").replace(/\n/g, " · ");
+  $("meta").innerHTML = `${DATA.cards.length - 1} tagged test cards<br>of ${DATA.meta.cards.toLocaleString()} in the dataset<br>tags: ${esc(DATA.tagModel)}`;
+  $("tabs").innerHTML = themes.map((t, i) => `
+    <button class="tab" role="tab" id="tab-${i}" aria-selected="${i === themeIdx}" data-i="${i}" type="button">
+      <span class="k">${t.kind} · ${t.viable_cards} viable</span><span class="n">${esc(t.name)}</span>
+    </button>`).join("");
+}
+
+function renderTheme() {
+  const t = themes[themeIdx];
+  document.querySelectorAll(".tab").forEach((b, i) => b.setAttribute("aria-selected", i === themeIdx));
+  $("pitch").textContent = t.pitch;
+  $("theme-tags").innerHTML = t.tags.map((x) =>
+    `<span class="chip ${x.role_focus === "payoff" ? "pay" : ""}">${esc(tagLabel(x.tag))} <b>×${x.weight}</b>${x.role_focus && x.role_focus !== "any" ? " · " + x.role_focus + "s" : ""}</span>`).join("");
+  const art = t.art ? Object.entries(t.art).flatMap(([k, v]) => v.map((x) => `<span class="chip dim" title="art ${k}">${esc(x)}</span>`)).join("") : "";
+  $("art-dir").innerHTML = art
+    ? `<span class="label">Art direction</span>${art}`
+    : `<span class="label">Art direction</span><span class="note">none: this theme is purely mechanical</span>`;
+}
+
+function renderPicks(ranked, cfg) {
+  const t = themes[themeIdx];
+  const picks = sampleRecs(ranked, cfg, { seed: `${$("seed").value}|${t.id}|${reroll}` });
+  $("picks").innerHTML = picks.map((r) => {
+    const p = r.parts, c = index.get(r.oracle_id).card;
+    const gem = p.obscurity > 0.85 && p.quality >= 0.55;
+    return `<article class="pick">
+      <div class="top"><h3>${esc(r.name)}</h3><span class="role ${p.primaryRole}">${p.primaryRole}</span></div>
+      <div class="type">${esc(c.mana_cost)} ${esc(c.type_line)}</div>
+      <div class="chips">${tagChips(r, false)}</div>
+      <div class="facts"><span>#${r.poolRank} in pool</span><span>q ${p.quality.toFixed(2)}</span>${artFact(r, c)}<span class="${gem ? "gem" : ""}">EDHREC ${p.edhrec_rank ?? "—"}${gem ? " · deep cut" : ""}</span></div>
+    </article>`;
+  }).join("") || `<p class="note">No card clears the fit and quality thresholds for this theme. Lower the quality floor or the off-anchor penalty.</p>`;
+}
+
+function renderVariety(ranked, cfg) {
+  const t = themes[themeIdx], N = 200;
+  const counts = new Map(); let fromTop5 = 0;
+  const top5 = new Set(ranked.slice(0, 5).map((r) => r.name));
+  for (let i = 0; i < N; i++) {
+    for (const p of sampleRecs(ranked, cfg, { seed: `sim${i}|${t.id}` })) {
+      counts.set(p.name, (counts.get(p.name) ?? 0) + 1);
+      if (top5.has(p.name)) fromTop5++;
+    }
+  }
+  const total = [...counts.values()].reduce((a, b) => a + b, 0) || 1;
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const maxShare = sorted.length ? sorted[0][1] / N : 0;
+  $("variety").innerHTML = `
+    <div class="stat"><span class="v mono">${counts.size}</span><span class="d">different cards shown, out of ${Math.min(ranked.length, cfg.candidates.poolSize)} in the pool</span></div>
+    <div class="stat ${fromTop5 / total > 0.6 ? "warn" : ""}"><span class="v mono">${Math.round(100 * fromTop5 / total)}%</span><span class="d">of picks are the static top 5 (lower = less EDHREC-like)</span></div>
+    <div class="stat ${maxShare > 0.8 ? "warn" : ""}"><span class="v mono">${Math.round(100 * maxShare)}%</span><span class="d">of players see the most-shown card</span></div>`;
+  $("exposure").innerHTML = sorted.slice(0, 6).map(([n, c]) =>
+    `<div class="exp-row"><span>${esc(n)}</span><span class="meter"><i style="width:${(100 * c / N).toFixed(1)}%"></i></span><span class="mono">${Math.round(100 * c / N)}%</span></div>`).join("");
+}
+
+function renderRanking(ranked, cfg) {
+  const rows = ranked.slice(0, 40);
+  $("rank-body").innerHTML = rows.map((r, i) => {
+    const p = r.parts, c = index.get(r.oracle_id).card;
+    const main = `<tr class="card-row ${i < cfg.candidates.poolSize ? "in-pool" : ""}" data-id="${r.oracle_id}" tabindex="0">
+      <td class="num">${i + 1}</td><td><strong>${esc(r.name)}</strong></td><td class="num">${r.score.toFixed(3)}</td>
+      <td class="num">${p.fit.toFixed(2)}${p.offAnchor ? "*" : ""}</td><td class="num">${p.commanderMult.toFixed(2)}</td>
+      <td class="num">${p.quality.toFixed(2)}</td><td class="num">${p.popularityMult.toFixed(2)}</td><td class="num" title="${p.artHits.length ? esc(p.artHits.join(", ")) : ""}">${p.artMult.toFixed(2)}</td><td class="num">${p.edhrec_rank ?? "—"}</td>
+      <td><div class="chips">${tagChips(r, true)}</div></td></tr>`;
+    const links = p.commanderLinks.map((l) => `${tagLabel(l.tag)} (${l.kind})`).join(", ");
+    const detail = openRow === r.oracle_id
+      ? `<tr class="detail"><td></td><td colspan="9">${esc(c.mana_cost)} · ${esc(c.type_line)}\n${esc(c.oracle_text)}${links ? `\n\nCommander links: ${esc(links)}` : ""}${p.illustration && p.artMatch > 0 ? `\nArt: ${esc(p.illustration.set.toUpperCase())} printing by ${esc(p.illustration.artist ?? "")} matches ${esc(p.artHits.join(", "))}` : ""}</td></tr>` : "";
+    return main + detail;
+  }).join("") || `<tr><td colspan="10">Nothing scores above the thresholds.</td></tr>`;
+}
+
+function render() {
+  for (const [id, , fmt] of DIALS) $(id + "-o").textContent = fmt(Number($(id).value));
+  const cfg = readConfig();
+  const ranked = rankTheme(index, commander, themes[themeIdx], cfg);
+  renderPicks(ranked, cfg);
+  renderVariety(ranked, cfg);
+  renderRanking(ranked, cfg);
+}
+
+function configDiff() {
+  const cfg = readConfig(), out = {};
+  for (const [, path] of DIALS) {
+    const v = getPath(cfg, path), d = getPath(DEFAULT_CONFIG, path);
+    if (v !== d) {
+      const sect = path[0];
+      if (path[1] === "gemGate") { (out.popularity ??= {}).gemGate = cfg.popularity.gemGate; continue; }
+      (out[sect] ??= {})[path[1]] = v;
+    }
+  }
+  return JSON.stringify(out, null, 2);
+}
+
+$("tabs").addEventListener("click", (e) => {
+  const b = e.target.closest(".tab"); if (!b) return;
+  themeIdx = Number(b.dataset.i); reroll = 0; openRow = null; renderTheme(); render();
+});
+document.querySelectorAll(".dials input").forEach((el) => el.addEventListener("input", render));
+$("seed").addEventListener("input", () => { reroll = 0; render(); });
+$("reroll").addEventListener("click", () => { reroll++; render(); });
+$("reset").addEventListener("click", () => { loadDefaults(); render(); $("toast").textContent = "Defaults restored"; });
+$("copy").addEventListener("click", () => {
+  const text = configDiff();
+  const done = (msg) => { $("toast").textContent = msg; };
+  if (text === "{}") return done("Nothing changed from defaults");
+  navigator.clipboard.writeText(text).then(() => done("Copied. Paste into engine/config.local.json"),
+    () => done("Copy blocked here: " + text.replace(/\s+/g, " ")));
+});
+$("rank-body").addEventListener("click", (e) => {
+  const tr = e.target.closest("tr.card-row"); if (!tr) return;
+  openRow = openRow === tr.dataset.id ? null : tr.dataset.id; render();
+});
+$("rank-body").addEventListener("keydown", (e) => {
+  if (e.key === "Enter") { const tr = e.target.closest("tr.card-row"); if (tr) { openRow = openRow === tr.dataset.id ? null : tr.dataset.id; render(); } }
+});
+
+loadDefaults(); renderHeader(); renderTheme(); render();
+</script>

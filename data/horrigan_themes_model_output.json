@@ -1,0 +1,248 @@
+{
+ "oracle_id": "aedcde3b-3ed5-443c-a81c-03d785153e55",
+ "themes": [
+  {
+   "id": "twice-the-mutation",
+   "name": "Twice the Mutation",
+   "pitch": "Every swing proliferates twice, so your +1/+1 counters snowball into a wasteland-sized army.",
+   "kind": "core",
+   "tags": [
+    {
+     "tag": "plus1_counters",
+     "weight": 1.0
+    },
+    {
+     "tag": "proliferate",
+     "weight": 0.9
+    },
+    {
+     "tag": "counter_doubling",
+     "weight": 0.5
+    },
+    {
+     "tag": "modified",
+     "weight": 0.3,
+     "role_focus": "payoff"
+    }
+   ],
+   "art": {
+    "mood": [
+     "menacing"
+    ],
+    "palette": [
+     "green"
+    ],
+    "motifs": [
+     "mutant",
+     "super mutant",
+     "green glow"
+    ]
+   }
+  },
+  {
+   "id": "fatal-dose-of-rads",
+   "name": "Fatal Dose of Rads",
+   "pitch": "Toxic trample hits pile on poison, then a double proliferate every attack pushes opponents past ten.",
+   "kind": "core",
+   "tags": [
+    {
+     "tag": "infect",
+     "weight": 1.0
+    },
+    {
+     "tag": "proliferate",
+     "weight": 0.8
+    },
+    {
+     "tag": "poison_direct",
+     "weight": 0.5
+    },
+    {
+     "tag": "trample",
+     "weight": 0.3,
+     "role_focus": "enabler"
+    }
+   ],
+   "art": {
+    "mood": [
+     "eerie",
+     "grim"
+    ],
+    "setting": [
+     "wasteland"
+    ],
+    "palette": [
+     "sickly",
+     "green"
+    ],
+    "lighting": [
+     "glowing"
+    ],
+    "motifs": [
+     "green glow",
+     "mutant",
+     "fallout (universe)"
+    ]
+   }
+  },
+  {
+   "id": "enclave-super-soldier",
+   "name": "Enclave Super Soldier",
+   "pitch": "Suit up Horrigan with gear and pump, then swing indestructible and trampling through anyone who stands in the way.",
+   "kind": "core",
+   "tags": [
+    {
+     "tag": "voltron",
+     "weight": 1.0
+    },
+    {
+     "tag": "trample",
+     "weight": 0.7
+    },
+    {
+     "tag": "equipment",
+     "weight": 0.5
+    },
+    {
+     "tag": "protection",
+     "weight": 0.5
+    }
+   ],
+   "art": {
+    "mood": [
+     "menacing",
+     "heroic"
+    ],
+    "setting": [
+     "wasteland",
+     "battlefield"
+    ],
+    "subject": [
+     "person"
+    ],
+    "motifs": [
+     "power armor",
+     "super mutant",
+     "gun",
+     "armor"
+    ]
+   }
+  },
+  {
+   "id": "vault-of-loyalty",
+   "name": "Vault of Loyalty",
+   "pitch": "Proliferate ticks your planeswalkers toward ultimates while Horrigan guards them by trampling anything that attacks.",
+   "kind": "stretch",
+   "tags": [
+    {
+     "tag": "planeswalkers",
+     "weight": 1.0
+    },
+    {
+     "tag": "proliferate",
+     "weight": 0.8
+    },
+    {
+     "tag": "counter_doubling",
+     "weight": 0.4
+    },
+    {
+     "tag": "protection",
+     "weight": 0.3
+    }
+   ],
+   "art": {
+    "mood": [
+     "mysterious"
+    ],
+    "motifs": [
+     "planeswalker",
+     "magic"
+    ]
+   }
+  },
+  {
+   "id": "wither-wasteland",
+   "name": "Wither Wasteland",
+   "pitch": "Proliferate -1/-1 counters until enemy creatures rot away, and cash in on every death.",
+   "kind": "stretch",
+   "tags": [
+    {
+     "tag": "minus1_counters",
+     "weight": 1.0
+    },
+    {
+     "tag": "proliferate",
+     "weight": 0.8
+    },
+    {
+     "tag": "death_trigger",
+     "weight": 0.4,
+     "role_focus": "payoff"
+    }
+   ],
+   "art": {
+    "mood": [
+     "grim"
+    ],
+    "setting": [
+     "wasteland",
+     "swamp"
+    ],
+    "palette": [
+     "sickly",
+     "black"
+    ],
+    "motifs": [
+     "corpse",
+     "skeleton",
+     "bones"
+    ]
+   }
+  },
+  {
+   "id": "wasteland-warband",
+   "name": "Wasteland Warband",
+   "pitch": "Rally a horde of Warriors and mutants whose attack triggers turn every assault into a proliferating rampage.",
+   "kind": "stretch",
+   "tags": [
+    {
+     "tag": "typal:Warrior",
+     "weight": 1.0
+    },
+    {
+     "tag": "attack_triggers",
+     "weight": 0.7,
+     "role_focus": "payoff"
+    },
+    {
+     "tag": "go_wide",
+     "weight": 0.4
+    },
+    {
+     "tag": "pump",
+     "weight": 0.3
+    }
+   ],
+   "art": {
+    "mood": [
+     "chaotic",
+     "menacing"
+    ],
+    "setting": [
+     "battlefield",
+     "wasteland"
+    ],
+    "subject": [
+     "group",
+     "horde"
+    ],
+    "motifs": [
+     "armor",
+     "spear",
+     "blade"
+    ]
+   }
+  }
+ ]
+}

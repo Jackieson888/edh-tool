@@ -1,0 +1,5633 @@
+[
+ {
+  "oracle_id": "f6311b7a-7482-4b13-9f8f-13e80c98e98e",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "pump",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.42,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "aedcde3b-3ed5-443c-a81c-03d785153e55",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "voltron",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "wasteland",
+   "super mutant",
+   "enforcer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0bc7f093-bef0-4f1a-852c-4b75ebf54838",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "3c1ef404-e2c6-486d-a5a2-d5779c71d498",
+  "tags": [
+   {
+    "tag": "tutor",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "druidic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "535e2af0-7b08-4026-b1bf-87626407dd42",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "desert",
+   "demon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "9188031e-1c24-4981-a3d2-461a2bf917b6",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.5
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "demon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0d3a4db2-df79-4946-8f87-b174cf9c293c",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "graveyard_hate",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "scavenger"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "4b457bc2-2d8c-42cb-9a63-bb4c459d14e3",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "wasteland",
+   "radiation"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "8255b408-cc8c-453f-982c-f361b5559cec",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "keyword_soup",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.38,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "4ba5b3f6-503b-43e6-b66e-4f8c55cffed7",
+  "tags": [
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "landfall",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "go_wide",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [
+   "overgrowth"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7735eeba-693b-47e2-bd51-414379cf1016",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 1.0
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [
+   "wild"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "59a405d7-2f28-41b8-a5bb-011f45a5fdf2",
+  "tags": [
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "sewer",
+   "street thug"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "83bf5610-a798-4508-88d2-c60d96f60d23",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "038c0165-32b6-4e81-8180-604b49905207",
+  "tags": [
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "eclipse",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c0d20e66-deb6-4a20-a2c1-8a79514e3792",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "villain"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e11a856c-31d3-4f4b-a517-8a5134b88517",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "serpent"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b0102259-7a2c-470e-b04b-4a1f615d057c",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian",
+   "plague",
+   "vermin"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e80772e2-8623-4094-81a2-70828b2b151c",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "phyrexian",
+   "colossal"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "090018e0-4dcb-4b3c-b4e0-7ba62de0484d",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "fc50e254-71bc-46b3-93e6-c6eb820a3473",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "swarm"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "33bea2f0-c5aa-44b5-8714-5f50f7f2bb05",
+  "tags": [
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "pump",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "vampire"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f2a54e85-dd8b-462c-a811-c9553dc349a5",
+  "tags": [
+   {
+    "tag": "reanimation",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Vampire",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Wizard",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "necromancy"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "09ecb8df-2a17-4e5a-814c-474bce54794d",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "treasure",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "group_hug",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "poisoner",
+   "apothecary"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c99896a8-8b58-4946-8f2d-b4e2562f278a",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "overgrowth"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "04b7362d-0490-4cb0-b5d7-2a7732f659ce",
+  "tags": [
+   {
+    "tag": "graveyard_hate",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "swamp"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "19ef24b7-25f5-4ae2-b892-3e15ed62d299",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "snow"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "28fe909b-06e0-424c-9f75-c824a25f5865",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "evolution"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "312c7a7b-2084-42b0-9b13-0a6d3e43a73d",
+  "tags": [
+   {
+    "tag": "typal:Squirrel",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "self_mill",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "hoarder",
+   "woodland"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d5b80895-621a-40df-bf48-6c7295658f21",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "phyrexian",
+   "fungus"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b3360259-19df-43c6-95a9-e76770f2fb77",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "jungle"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a1cc5e37-b09a-4b7f-afd5-77c1c35aa425",
+  "tags": [
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "ghoul",
+   "scavenger"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "52d04c36-9d38-42b2-9e47-905ab06cb708",
+  "tags": [
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.1,
+  "vibes": [
+   "mobster"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c549b0fd-1e08-4873-952e-a14dc45a0fd2",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "go_wide",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "village hero"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "fb47ceb6-b3b3-4e81-9c15-b9990c85e892",
+  "tags": [
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "go_wide",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "x-men",
+   "steel"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0895c9b7-ae7d-4bb3-af17-3b75deb50a25",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.9,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "43f2d81e-aa01-4fa9-9046-6a27a05dbd2d",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.2
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "482bd55a-ba73-4722-8643-94fa12818515",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "plague",
+   "machine"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "1b6da140-0d91-4fae-a3ee-33e6808acf34",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ba922414-878f-4261-9bce-500c5c9e9506",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "066f6a3d-5e7b-40a4-b348-6dfb5d5239de",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "spider"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0ad44727-41c3-471c-b038-1bf43c5f296a",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "41b929ad-0c44-4e50-84d3-13b318035543",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "heroic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a1ddf985-1646-468c-b1a4-ab6bb8e9dd7c",
+  "tags": [
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Ninja",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Turtle",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "sewer",
+   "pizza"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e5e31d27-3907-4c65-a988-a754f217e061",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "swamp beast"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "8b755881-a72d-4e21-a369-d2924eb4585a",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 1.0
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6cf8a502-6620-460f-8fab-b4ede28beb11",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "horror",
+   "museum"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c56e6715-80bc-4f9d-86ef-7c31b1ef0a17",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "counter_movement",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "insect"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "cb814e16-acf7-41d5-a357-1323dcc369f3",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "untap",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "druidic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "01546b7d-a233-4176-8843-d732074dc5b6",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "token_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "planeswalkers",
+    "role": "payoff",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.9,
+  "vibes": [
+   "abundance"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e4912bc3-bee9-4a2f-a13e-3a99018f8a65",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "shrink",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "oil"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ed5d6aba-0b8d-48b3-a84c-618f45fb67b1",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "giant slayer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b45fdeab-00cc-4422-af9f-66f30a880a7c",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "landfall",
+    "role": "payoff",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "evolution"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0e07f1af-5ff6-4da5-8683-aea4cc390975",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "recursion",
+    "role": "payoff",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "mutation",
+   "archive"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "482ec736-7d4a-49c6-a757-e134123329ca",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e350c2d5-0ca2-4b9c-b01f-a3c31cbf8d10",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a75445d3-1303-4bb5-89ad-26ea93fecd48",
+  "tags": [
+   {
+    "tag": "landfall",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "27b047e3-0d41-45e2-98e9-9391d7923a1e",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.1
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0fac3187-9b86-4854-854b-a4c203526a64",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "landfall",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "495e52e6-4c2b-4574-9474-eadbdcc8b4ac",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "95560508-7ac9-4be9-8a3f-3c7d5b52807b",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "284db94d-e583-4355-89fd-6c0906f9d17e",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "wasteland",
+   "ghoul",
+   "radiation"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "3a7e3423-4df3-4e10-9861-ac2f403bc49d",
+  "tags": [
+   {
+    "tag": "toughness_matters",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.15,
+  "vibes": [
+   "superhero",
+   "paper"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b1aae085-2dca-425c-911a-19a89a0a4993",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian",
+   "imp"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "2ef75cf3-30dc-4852-a6d1-1d6391fad022",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "counter_movement",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "ancient"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "09117016-5fd1-4590-9867-aad65d3097e3",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.25,
+  "vibes": [
+   "outlaw"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c0b1fba1-4338-4671-934b-098689ad2085",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "gladiator",
+   "snake"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "298a7e1a-b254-442e-bc1d-2a3e5296d849",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "big_power",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "hunter",
+   "beasts"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d099be2e-1879-4bb0-a27d-a386308387c0",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "recursion",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "645a4dee-a4e0-4850-a781-522aa718827f",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "auras",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "oil"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "15679808-baba-4a11-b111-f313ce24197f",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b30eae2a-bc1c-45a3-93ae-e1c30d26797c",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "opponent_mill",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "self_mill",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "ghoul"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f4350c4e-7e53-4401-b889-14bed27bee9c",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "voltron",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "cyborg"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "020d0c91-da68-40da-8561-5522377f3d07",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [
+   "wurm"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "411ba1a2-30bb-4618-b874-6be0d996f07d",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0efb0d7e-dea0-4817-a243-15066e9ef333",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Insect",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "self_mill",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "graveyard_size",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [
+   "swarm",
+   "hunger"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d9e48750-d930-4095-abf0-dec2ac53be81",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "adf9aed9-dd63-48da-b799-ea94839fc22a",
+  "tags": [
+   {
+    "tag": "typal:Zombie",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "wasteland",
+   "ghoul",
+   "mayor"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a1f3da21-af6d-450e-bf0b-985d158418e6",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [
+   "armored"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d0ecea04-9768-4b09-8718-dd59135251e3",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "auras",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "wasteland",
+   "treefolk"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "24882fa2-3fe9-4c1b-aa3d-0e6488b9db27",
+  "tags": [
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 1.0
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [
+   "heroic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "dd27c5fa-4355-4e5c-8219-b74cfe209da0",
+  "tags": [
+   {
+    "tag": "typal:Elf",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "elven court",
+   "blight"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f8148664-49c0-421f-93a5-cd59e4e9ea36",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "group_slug",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "vermin",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "8462a2fa-944b-4fff-a161-10345690b56f",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "myr"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "2feca0cd-6bd3-4e19-8cfd-81d7bd1118ee",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "go_wide",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "34428f42-03ac-4795-8286-6cbea796df2b",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "druidic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "478cc55b-dd71-4adc-909d-c39d435587ee",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.25,
+  "vibes": [
+   "phyrexian",
+   "incubator"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7b740cd6-e07d-4273-8a7f-e084bdaf0f1c",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "66051196-53ea-4461-b241-205df9395b3b",
+  "tags": [
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "064f371c-e4f2-423b-9f35-443191dfbb4c",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "opponent_mill",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "vermin"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "675281ff-b81f-4e5e-9f85-9f8cd202b50b",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "915b75d1-b5e3-4aca-a54c-beaccef0a2e4",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "tavern"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "9b9a10ff-5a5d-4df8-88aa-18d84ff9117c",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "rallying"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "9370f6bf-d6a0-4c5b-828f-7229f563cc07",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "card_draw",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "alien",
+   "calamity"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f122624f-f30d-444e-a62a-939829241045",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "spirit"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "9fb8cd81-403a-4988-8f1c-b8eccf8abd9c",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c017f54c-e4c0-411e-b8c1-eb20b1b86c56",
+  "tags": [
+   {
+    "tag": "typal:Rat",
+    "role": "both",
+    "strength": 0.9
+   },
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "vermin"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6755a7af-5b55-4245-a777-27e69979479b",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.25,
+  "vibes": [
+   "phyrexian",
+   "insect"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ca204b66-8d0c-431a-8d34-282f7c2d17da",
+  "tags": [
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a6c05941-2cfb-4dac-a7c0-ab808187eb7c",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "tutor",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "reanimation",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "necromancy"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e1b6cc44-41b6-43d0-9fe9-722cebb1c47b",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "reanimation",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "necromancy",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5e958212-6a5b-4288-8d31-f1572619d7dc",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "edict",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.9,
+  "vibes": [
+   "undead army"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "16156274-8dc0-439c-94c4-e8c89bbb5687",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "spaceport"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "726d9d2c-736a-4852-9938-a0f50d8fd89f",
+  "tags": [
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "puppeteer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f1e03d99-024a-430b-9342-ffd2268bd103",
+  "tags": [
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "wasteland",
+   "military"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ccb39f4a-2684-4eb7-9066-aad81ae08962",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "card_draw",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "shrink",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "slasher"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "1f91297a-ec2b-4ea8-9198-aa1daac20ff8",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "shapeshifter"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "170ab932-9d50-4ce7-9a42-08e1edce7e7c",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "sewer",
+   "pizza"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5502741a-e3b9-454e-8121-4360a6db6750",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "472d9a18-19a0-46c0-a4bf-328ebec7ce41",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.3
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "sewer",
+   "ooze"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e7c4bc25-806c-4a75-85bf-a0e66308d5d8",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6abf433e-27da-4abb-b262-3af792a1db23",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "myr"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "78826359-fe63-44ad-adc4-a17ffcd710e4",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ff58459a-0015-4012-86c0-580da4e02676",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "auras",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7d9a424e-cab1-410f-9c04-ee0025d04169",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "both",
+    "strength": 0.9
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "phyrexian",
+   "plague priest"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "536f7c92-2f1e-49e7-98de-47382a9488f1",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "theft",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "necromancy"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "41dd7ec7-a238-4723-a244-9a112d4fbfd2",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "insect"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "31d4d8ce-36ba-4297-8c7a-34a83ba25255",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "recursion",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "landfall",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "untap",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "animist"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5aa3abf1-d56b-4f42-8c84-7e5a2c15ee0f",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "lands_matter",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "animist"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f09388e2-f190-4b48-ba85-3ffc33020392",
+  "tags": [
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "group_slug",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "shrink",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "apocalypse"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7fb88a5d-9b72-4da9-ade4-d09cadd7e1cb",
+  "tags": [
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "nuke"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f7289e62-ce5e-4f11-8d64-9fb62531b578",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "payoff",
+    "strength": 0.9
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "spider"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "63193ad4-bbd2-4cc3-98e2-9f6b985e8ae7",
+  "tags": [
+   {
+    "tag": "group_hug",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "goat"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "238f2c86-4376-48f2-ae71-c10d3d785163",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.25,
+  "vibes": [
+   "phyrexian",
+   "troll"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "aa6723a2-75da-49f5-a1ba-cbfa82c55301",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "41fed659-237c-4d8e-ad31-d17fa0d3f764",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5dd54b2a-7d6a-44f5-8827-ff3660a4b12b",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "street"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b473e293-59e3-4e04-acf2-622604aeb25f",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "367d4cf2-270f-4236-af10-7d5e8ea8c9fe",
+  "tags": [
+   {
+    "tag": "reanimation",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "necromancy"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "bf0ee9da-6071-440c-9149-d441f730fcfb",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "serpent",
+   "undead"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "958628af-243c-4eb0-8620-5d483b6da768",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "auras",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "47148b5d-3850-4614-822e-6ef2755996f8",
+  "tags": [
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "shrink",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b85d54e9-4f21-4440-9fd4-7b73b560c99d",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "009fcd1e-5c5f-435b-afc1-099f1622e45c",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "phyrexian",
+   "juggernaut"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "4fc2755c-ae7b-4147-a573-b33679a461e8",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "both",
+    "strength": 0.9
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "swarm"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e71479c9-bb38-4112-bf8a-41b39a3ade51",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "sewer",
+   "pizza"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "2f328e05-5edf-4b21-9c2a-50dcf1e7b3ec",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "myr",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "047e761e-7bbe-403b-86d7-cb9fb0b20b21",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "22252186-15d0-468f-8cab-c74db9b71439",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "af23d348-adc9-451e-af08-bf9b1986c591",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "recursion",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "festival"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "828fe0c0-e280-4a8b-9e49-68cb34c2da97",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "druidic"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5e3d2b03-4c44-49a3-ab11-871ca9c372f7",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.5
+   },
+   {
+    "tag": "pump",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a51ec70d-1356-4403-a858-b99445bac54a",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "ooze"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "3a198a16-17b9-481e-b516-5bc945c7e247",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "typal:Elf",
+    "role": "payoff",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "elven court"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c665544f-557b-4631-a1dc-39571470ca2e",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "token_doubling",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "group_hug",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "abundance"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "00e0b103-892c-49b3-836d-867fff197bbd",
+  "tags": [
+   {
+    "tag": "theft",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "sac_fodder",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "faerie",
+   "puppeteer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "3a336b30-335a-49d0-b192-c20f3670452b",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "rot"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d37e8f75-c7cb-4270-bb2f-0125e972ed15",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "wasteland",
+   "beast"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "8539f295-5d58-4436-a73a-b9277c4c7795",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "90109cb4-1e16-4d54-9332-b5fb1e71042c",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "horror"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "8fba247e-9849-4a06-84ff-242894b0503a",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "vehicles",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "alien",
+   "ufo"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c23e5b80-08d2-4e24-9908-fe2aa4f30f6f",
+  "tags": [],
+  "quality": 0.6,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6761b077-7a89-42c9-93ab-675fe4231564",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "demigod",
+   "hunt"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f29dc596-2121-4421-8463-15f6c2e8b9b3",
+  "tags": [
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7a49731b-bd95-4f0a-ac47-1aa318c12fec",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "untap",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "344671d1-8abf-4be1-93c9-ef917e88e6c9",
+  "tags": [
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "graveyard_size",
+    "role": "payoff",
+    "strength": 0.3
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "wasteland",
+   "vermin"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "115c7ca7-c27b-43ca-9281-be6913e90059",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "serpent"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "d4c4c7d7-744a-4548-adad-a5fc4fb3f586",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "archers"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "cf4a3b1a-4b87-473e-be1f-3aa3da45c28e",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "payoff",
+    "strength": 1.0
+   },
+   {
+    "tag": "drain",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "schemer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ed5889c9-e524-40c1-9011-7559a992bb1b",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "opponent_mill",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "bat"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c46738a4-e0d4-41dc-a20d-4800f00cea62",
+  "tags": [
+   {
+    "tag": "recursion",
+    "role": "enabler",
+    "strength": 0.9
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "seasons"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "bbd0a2a4-f81b-4a6b-bc4d-d7e53dc51333",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "superhero",
+   "gamma"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c7c37369-47f8-4027-a016-a2055307dd24",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "counter_movement",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [
+   "biomancy"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "daf6c421-e7f7-4fc6-967c-65f4ab96fcfd",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "dragon",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c9739382-9fe0-4d24-b58e-1e45a88491b6",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "hunt"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "b0f56eef-1abc-437e-8e2e-c079731fe783",
+  "tags": [
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.15,
+  "vibes": [
+   "butcher"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "1e6a24be-8281-41c1-a5ba-b68f0ef1d7b8",
+  "tags": [
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6ad8011d-3471-4369-9d68-b264cc027487",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 1.0
+   }
+  ],
+  "quality": 0.98,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "fee680c6-afe2-4321-9d8a-8f81a612a53b",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "typal:Vampire",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "vampire lord"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "142af8f1-6d6b-4043-8cc4-6632481972c1",
+  "tags": [
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "plague"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "11c7662f-e688-40a6-98fd-6ae89d231b44",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "pay_life",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c3fda16e-fd56-434e-91ac-561ae0482f43",
+  "tags": [
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f0ef48e1-c3d7-4ce2-8f7c-653342778cae",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "wasteland",
+   "super mutant",
+   "theater"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "dc11d9dc-7d18-45dc-955b-d0ba71fc0db8",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "robot"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "fa08400f-b7ca-4c5c-b7ca-a6583b783878",
+  "tags": [
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.25,
+  "vibes": [
+   "wasteland",
+   "survival"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c8b143ad-43ec-4e0d-a440-e348daa31391",
+  "tags": [
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7a8baaf9-e21f-41a0-9f15-80764f6e5e68",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "voltron",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "legendary blade"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6eca2ac9-16ba-4a11-b6ee-3caf2d7d8254",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "95a53dd7-76dc-46f1-8833-fafd02ba49c4",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "pump",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "poison"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7c376ea9-d50a-4cc3-ae40-7bac3a926f20",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "go_wide",
+    "role": "payoff",
+    "strength": 0.4
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "earthbending"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "71b5a3b4-31bb-44d8-a80c-36efff2a621e",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "landfall",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "wasteland",
+   "farm"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "1bd3e453-aa21-4ee6-95c2-d6d920ee8e7a",
+  "tags": [
+   {
+    "tag": "landfall",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.2
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0eb11b2d-a397-48da-a0f3-9f0f83f42282",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.7
+   },
+   {
+    "tag": "untap",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "tutor",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "artificer"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "483c747a-b602-4747-95bc-72c2c17ed509",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "equipment",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "voltron",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "spark"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "bd768e8f-8f04-487e-85e9-2828d6fd8745",
+  "tags": [
+   {
+    "tag": "clones",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "recursion",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "charge_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "sewer",
+   "clone lab"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "660f370a-b25b-4ea5-b765-7abf96899c1c",
+  "tags": [
+   {
+    "tag": "theft",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "cost_reduction",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "crystal"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5e7ef7fe-968b-4ada-9fe4-6fda0541aafc",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "cost_reduction",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.65,
+  "vibes": [
+   "crystal"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "38347ab3-ae43-4d10-b665-8520ace0eb76",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.35,
+  "vibes": [
+   "phyrexian",
+   "doomsday device"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "ddfa5c7d-bc47-43e0-9607-b3baa8e6a17d",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Zombie",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "treasure",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "wasteland",
+   "ghoul",
+   "gunslinger"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "78427103-9543-41fb-b6d4-72963fe87275",
+  "tags": [
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "big_power",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "lifegain",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [
+   "sacred grove"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "63e8d282-d038-4a8c-a0cb-f51ddf87d8ea",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "counter_movement",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "c0ef21d5-f4bf-4417-b701-d98c2dbbaa43",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "9965d9c5-2ebf-4a6c-930e-55c5890979be",
+  "tags": [
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5a5f39ab-21b4-415f-aa1f-d8fad420d372",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "throne"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "e6555cca-e608-4c87-b835-9cd47fd1f543",
+  "tags": [
+   {
+    "tag": "landfall",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "noncreature_tokens",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.8,
+  "vibes": [
+   "tracker"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "72deedab-7c17-4505-aeca-4bc8596d80a5",
+  "tags": [
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "world tree"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "3ded0c0c-40ce-4d14-a9a6-b023bc19ee0e",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "go_wide",
+    "role": "payoff",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "horde"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "f088817a-570d-4480-bc59-f2ad6675a71b",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "butler",
+   "estate"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "aeb9a2e6-ad11-4e2c-81d0-caf279d31ece",
+  "tags": [
+   {
+    "tag": "vehicles",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.3,
+  "vibes": [
+   "sewer",
+   "van"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "6e42da0c-151e-468d-91cb-5a5b117a9298",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "big_power",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "protection",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "phyrexian",
+   "dinosaur"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5c58353a-fd60-4528-bf0d-669626cda0b2",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "ramp",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "spirit dragon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "18bdc181-9592-4147-81fb-7f83ce137f70",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "cost_reduction",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "spirit dragon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "eecb3047-a563-441a-9175-200421981ac3",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "board_wipe",
+    "role": "enabler",
+    "strength": 0.8
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "spirit dragon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "05d1e797-bda2-4411-a546-919493768650",
+  "tags": [
+   {
+    "tag": "recursion",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "cc545c68-829f-4c57-94d2-cd1edf2667a7",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.7
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "dinosaur",
+   "city"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "448037c0-20b5-4ca4-9d8f-2702b4697127",
+  "tags": [
+   {
+    "tag": "typal:Sliver",
+    "role": "both",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.3
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.2,
+  "vibes": [
+   "sliver hive"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "03e59169-d8f8-40da-b5f7-645d16365e7b",
+  "tags": [
+   {
+    "tag": "reanimation",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.5,
+  "vibes": [
+   "phyrexian",
+   "vat"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "10c31317-71e8-42e0-85e0-3e64bd0c3dd3",
+  "tags": [
+   {
+    "tag": "oil_counters",
+    "role": "both",
+    "strength": 0.7
+   },
+   {
+    "tag": "reanimation",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "death_trigger",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "vat"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "bc9d75e7-1f64-4376-8e19-f6622ffbeb28",
+  "tags": [
+   {
+    "tag": "rad_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "typal:Zombie",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "charge_counters",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.6,
+  "vibes": [
+   "wasteland",
+   "radiation",
+   "vault",
+   "ghoul"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "eafd7ba5-691d-4f8d-94bb-70a5612245a1",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "plague priest"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "766c3528-2c5c-4e92-aa85-b1e0e115d491",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "etb_value",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "phyrexian",
+   "knight"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7d70a2f4-92cb-40c3-9e5a-f6c57d4a64c2",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "artifacts_matter",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "robot",
+   "assassin"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "5a3fdf5a-bff8-4896-b288-3f43f9a72d9b",
+  "tags": [
+   {
+    "tag": "counter_doubling",
+    "role": "enabler",
+    "strength": 1.0
+   },
+   {
+    "tag": "planeswalkers",
+    "role": "payoff",
+    "strength": 0.6
+   },
+   {
+    "tag": "trample",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "stax",
+    "role": "enabler",
+    "strength": 0.3
+   }
+  ],
+  "quality": 0.85,
+  "vibes": [
+   "phyrexian",
+   "praetor"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "33fd9192-3e9b-4d3a-92aa-06de29d449df",
+  "tags": [
+   {
+    "tag": "edict",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "poison_direct",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.55,
+  "vibes": [
+   "gorgon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "05d09c55-f551-4cb4-a8d2-4811dccc848d",
+  "tags": [
+   {
+    "tag": "planeswalkers",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.75,
+  "vibes": [
+   "phyrexian",
+   "gorgon"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "4b515bb0-f275-4400-8032-3173b799ab40",
+  "tags": [
+   {
+    "tag": "plus1_counters",
+    "role": "both",
+    "strength": 0.8
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.7,
+  "vibes": [
+   "construct"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "23c2cdc9-2b16-423a-b932-2daadeb1021b",
+  "tags": [
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "spot_removal",
+    "role": "enabler",
+    "strength": 0.4
+   },
+   {
+    "tag": "shrink",
+    "role": "enabler",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "18d270bf-d0d3-4fac-a8d2-5f920e789bb5",
+  "tags": [
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "evasion",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "combat_damage_triggers",
+    "role": "payoff",
+    "strength": 0.4
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "phyrexian",
+   "specter"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "7100fe0c-1c2a-461a-83b3-684d44279081",
+  "tags": [
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.9
+   },
+   {
+    "tag": "big_power",
+    "role": "payoff",
+    "strength": 0.5
+   },
+   {
+    "tag": "attack_triggers",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "x-men",
+   "berserker"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "0eeb9a62-1b36-42f5-8820-3331fa5ca3a6",
+  "tags": [
+   {
+    "tag": "creature_tokens",
+    "role": "enabler",
+    "strength": 0.7
+   },
+   {
+    "tag": "infect",
+    "role": "enabler",
+    "strength": 0.5
+   },
+   {
+    "tag": "infect",
+    "role": "payoff",
+    "strength": 0.5
+   }
+  ],
+  "quality": 0.45,
+  "vibes": [
+   "phyrexian",
+   "wurm"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "2b4dd121-b477-42ff-9dd1-5d0f957a509d",
+  "tags": [
+   {
+    "tag": "typal:Mutant",
+    "role": "payoff",
+    "strength": 0.8
+   },
+   {
+    "tag": "plus1_counters",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.4,
+  "vibes": [
+   "x-men"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ },
+ {
+  "oracle_id": "a1e232c0-dc38-47be-a5a0-f68bc1d86a29",
+  "tags": [
+   {
+    "tag": "sac_outlet",
+    "role": "enabler",
+    "strength": 0.9
+   },
+   {
+    "tag": "minus1_counters",
+    "role": "enabler",
+    "strength": 0.8
+   },
+   {
+    "tag": "proliferate",
+    "role": "enabler",
+    "strength": 0.6
+   },
+   {
+    "tag": "card_draw",
+    "role": "enabler",
+    "strength": 0.6
+   }
+  ],
+  "quality": 0.9,
+  "vibes": [
+   "phyrexian",
+   "physician"
+  ],
+  "notes": null,
+  "dropped_hints": []
+ }
+]

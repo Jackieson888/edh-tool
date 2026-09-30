@@ -1,0 +1,313 @@
+[
+ {
+  "slug": "agent-frank-horrigan",
+  "name": "Agent Frank Horrigan",
+  "oracle_id": "aedcde3b-3ed5-443c-a81c-03d785153e55",
+  "color_identity": [
+   "B",
+   "G"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/5/c/5c2f624e-3d61-4582-9582-6c6cf558936e.jpg?1783912198",
+  "image": "https://cards.scryfall.io/normal/front/5/c/5c2f624e-3d61-4582-9582-6c6cf558936e.jpg?1783912198",
+  "artist": "Wisnu Tan",
+  "themes": [
+   {
+    "id": "spontaneous-infection",
+    "name": "Spontaneous Infection",
+    "kind": "core"
+   },
+   {
+    "id": "forced-evolution",
+    "name": "Forced Evolution",
+    "kind": "core"
+   },
+   {
+    "id": "time-to-die",
+    "name": "Time to Die",
+    "kind": "stretch"
+   },
+   {
+    "id": "impure-strain",
+    "name": "Impure Strain",
+    "kind": "stretch"
+   },
+   {
+    "id": "enclave-super-soldier",
+    "name": "Enclave Super Soldier",
+    "kind": "core"
+   },
+   {
+    "id": "vault-of-loyalty",
+    "name": "Vault of Loyalty",
+    "kind": "stretch"
+   },
+   {
+    "id": "wasteland-warband",
+    "name": "Wasteland Warband",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 6390
+ },
+ {
+  "slug": "the-walls-of-ba-sing-se",
+  "name": "The Walls of Ba Sing Se",
+  "oracle_id": "af7d7da5-aff5-48e1-901a-f81257a85f71",
+  "color_identity": [],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/2/4/24a14ac5-0b7e-4441-9963-782a7cda3f4a.jpg?1783904915",
+  "image": "https://cards.scryfall.io/normal/front/2/4/24a14ac5-0b7e-4441-9963-782a7cda3f4a.jpg?1783904915",
+  "artist": "Arthur Yuan",
+  "themes": [
+   {
+    "id": "there-is-no-war-here",
+    "name": "There Is No War in Ba Sing Se",
+    "kind": "core"
+   },
+   {
+    "id": "earth-kingdom-machinery",
+    "name": "Earth Kingdom Machinery",
+    "kind": "core"
+   },
+   {
+    "id": "refugees-behind-the-wall",
+    "name": "Refugees Behind the Wall",
+    "kind": "stretch"
+   },
+   {
+    "id": "avatar-state-arsenal",
+    "name": "Avatar State Arsenal",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 2221
+ },
+ {
+  "slug": "breya-etherium-shaper",
+  "name": "Breya, Etherium Shaper",
+  "oracle_id": "d460a9e2-5a7d-4562-880e-45174be19a9d",
+  "color_identity": [
+   "B",
+   "R",
+   "U",
+   "W"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/6/1/61061110-a8f4-41ac-a89e-93359050919d.jpg?1783911146",
+  "image": "https://cards.scryfall.io/normal/front/6/1/61061110-a8f4-41ac-a89e-93359050919d.jpg?1783911146",
+  "artist": "Tiffany Turrill",
+  "themes": [
+   {
+    "id": "thopter-swarm-foundry",
+    "name": "Thopter Swarm Foundry",
+    "kind": "core"
+   },
+   {
+    "id": "etherium-sacrificial-engine",
+    "name": "Etherium Sacrificial Engine",
+    "kind": "core"
+   },
+   {
+    "id": "artifact-artisans-workshop",
+    "name": "Artificer's Grand Workshop",
+    "kind": "core"
+   },
+   {
+    "id": "treasure-trove-fodder",
+    "name": "Scrap Heap Treasure Trove",
+    "kind": "stretch"
+   },
+   {
+    "id": "armed-and-etherium-plated",
+    "name": "Armed and Etherium-Plated",
+    "kind": "stretch"
+   },
+   {
+    "id": "esper-blink-and-clone",
+    "name": "Twice-Forged Artificers",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 18777
+ },
+ {
+  "slug": "delina-wild-mage",
+  "name": "Delina, Wild Mage",
+  "oracle_id": "8d57dadb-c689-4691-b331-aba15daf46ff",
+  "color_identity": [
+   "R"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/d/0d550977-3c66-4f50-8515-ff7726cf8f2a.jpg?1787676226",
+  "image": "https://cards.scryfall.io/normal/front/0/d/0d550977-3c66-4f50-8515-ff7726cf8f2a.jpg?1787676226",
+  "artist": "Wisnu Tan",
+  "themes": [
+   {
+    "id": "encore-of-the-wild-mage",
+    "name": "Encore of the Wild Mage",
+    "kind": "core"
+   },
+   {
+    "id": "ambush-of-echoes",
+    "name": "Ambush of Echoes",
+    "kind": "core"
+   },
+   {
+    "id": "wild-mage-coven",
+    "name": "Wild Mage Coven",
+    "kind": "core"
+   },
+   {
+    "id": "critical-hit-cavalry",
+    "name": "Critical Hit Cavalry",
+    "kind": "stretch"
+   },
+   {
+    "id": "natural-twenty-titans",
+    "name": "Natural Twenty Titans",
+    "kind": "stretch"
+   },
+   {
+    "id": "wild-magic-surge",
+    "name": "Wild Magic Surge",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 4514
+ },
+ {
+  "slug": "fblthp-lost-on-the-range",
+  "name": "Fblthp, Lost on the Range",
+  "oracle_id": "764f6412-c4ff-4eec-9a9d-870661f97f8b",
+  "color_identity": [
+   "U"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/0/1/01d3e6ea-4791-4948-af22-c1bd04c34c1e.jpg?1783911846",
+  "image": "https://cards.scryfall.io/normal/front/0/1/01d3e6ea-4791-4948-af22-c1bd04c34c1e.jpg?1783911846",
+  "artist": "Brian Valeza",
+  "themes": [
+   {
+    "id": "top-of-the-range",
+    "name": "Top-Deck Roundup",
+    "kind": "core"
+   },
+   {
+    "id": "small-but-warded",
+    "name": "Ward 2 and a Dream",
+    "kind": "core"
+   },
+   {
+    "id": "lost-legends",
+    "name": "Found: One Legend",
+    "kind": "core"
+   },
+   {
+    "id": "plot-twist-spells",
+    "name": "Plotting the Perfect Cantrip",
+    "kind": "stretch"
+   },
+   {
+    "id": "lost-and-flickered",
+    "name": "Now You See Fblthp",
+    "kind": "stretch"
+   },
+   {
+    "id": "junk-from-the-range",
+    "name": "Scrap Heap Wanderer",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 6094
+ },
+ {
+  "slug": "pramikon-sky-rampart",
+  "name": "Pramikon, Sky Rampart",
+  "oracle_id": "377d0fa7-1b3d-4b97-b066-dceeff3734d0",
+  "color_identity": [
+   "R",
+   "U",
+   "W"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/8/5/8569ad47-a243-402d-899f-4e6b17ea4e1e.jpg?1783932798",
+  "image": "https://cards.scryfall.io/normal/front/8/5/8569ad47-a243-402d-899f-4e6b17ea4e1e.jpg?1783932798",
+  "artist": "Richard Wright",
+  "themes": [
+   {
+    "id": "great-wall-of-dominaria",
+    "name": "Great Wall of Dominaria",
+    "kind": "core"
+   },
+   {
+    "id": "velvet-rope-of-three-colors",
+    "name": "Velvet Rope of Three Colors",
+    "kind": "core"
+   },
+   {
+    "id": "pillow-fort-panic-room",
+    "name": "Pillow Fort Panic Room",
+    "kind": "core"
+   },
+   {
+    "id": "walkers-behind-the-wall",
+    "name": "Walkers Behind the Wall",
+    "kind": "stretch"
+   },
+   {
+    "id": "diplomatic-immunity",
+    "name": "Diplomatic Immunity",
+    "kind": "stretch"
+   },
+   {
+    "id": "draw-go-from-the-ramparts",
+    "name": "Draw-Go From the Ramparts",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 9521
+ },
+ {
+  "slug": "the-ur-dragon",
+  "name": "The Ur-Dragon",
+  "oracle_id": "87b22b09-4f6d-4bc5-9cfc-663e4c7c6981",
+  "color_identity": [
+   "B",
+   "G",
+   "R",
+   "U",
+   "W"
+  ],
+  "art_crop": "https://cards.scryfall.io/art_crop/front/1/0/10d42b35-844f-4a64-9981-c6118d45e826.jpg?1783915607",
+  "image": "https://cards.scryfall.io/normal/front/1/0/10d42b35-844f-4a64-9981-c6118d45e826.jpg?1783915607",
+  "artist": "Jaime Jones",
+  "themes": [
+   {
+    "id": "scales-of-every-hue",
+    "name": "Scales of Every Hue",
+    "kind": "core"
+   },
+   {
+    "id": "swing-first-deploy-later",
+    "name": "Swing First, Deploy Later",
+    "kind": "core"
+   },
+   {
+    "id": "wyrmspeed-mana-tithe",
+    "name": "Wyrmspeed Mana Tithe",
+    "kind": "core"
+   },
+   {
+    "id": "gold-fever-roost",
+    "name": "Gold Fever Roost",
+    "kind": "stretch"
+   },
+   {
+    "id": "ancient-bones-awaken",
+    "name": "Ancient Bones Awaken",
+    "kind": "stretch"
+   },
+   {
+    "id": "molting-season",
+    "name": "Molting Season",
+    "kind": "stretch"
+   }
+  ],
+  "pool": 22396
+ }
+]

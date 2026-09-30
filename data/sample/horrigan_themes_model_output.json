@@ -1,0 +1,195 @@
+{
+  "oracle_id": "aedcde3b-3ed5-443c-a81c-03d785153e55",
+  "themes": [
+    {
+      "id": "spontaneous-infection",
+      "name": "Spontaneous Infection",
+      "pitch": "Poison shows up out of nowhere, and every Horrigan swing pushes the whole table two ticks closer to ten.",
+      "kind": "core",
+      "tags": [
+        {
+          "tag": "infect",
+          "weight": 1.0
+        },
+        {
+          "tag": "proliferate",
+          "weight": 0.7,
+          "role_focus": "enabler"
+        },
+        {
+          "tag": "poison_direct",
+          "weight": 0.5
+        }
+      ],
+      "art": {
+        "mood": [
+          "grim"
+        ],
+        "palette": [
+          "sickly",
+          "green"
+        ],
+        "motifs": [
+          "phyrexian oil",
+          "slime",
+          "poison",
+          "disease"
+        ]
+      }
+    },
+    {
+      "id": "forced-evolution",
+      "name": "Forced Evolution",
+      "pitch": "Dose the board with FEV: counters stack, double, and grow every time the big guy attacks.",
+      "kind": "core",
+      "tags": [
+        {
+          "tag": "plus1_counters",
+          "weight": 1.0
+        },
+        {
+          "tag": "counter_doubling",
+          "weight": 0.7
+        },
+        {
+          "tag": "proliferate",
+          "weight": 0.5,
+          "role_focus": "enabler"
+        }
+      ]
+    },
+    {
+      "id": "hot-zone",
+      "name": "Hot Zone",
+      "pitch": "Irradiate every opponent, then let proliferate crank the rads until their libraries melt.",
+      "kind": "core",
+      "tags": [
+        {
+          "tag": "rad_counters",
+          "weight": 1.0
+        },
+        {
+          "tag": "proliferate",
+          "weight": 0.6,
+          "role_focus": "enabler"
+        },
+        {
+          "tag": "opponent_mill",
+          "weight": 0.4,
+          "role_focus": "payoff"
+        }
+      ],
+      "art": {
+        "setting": [
+          "wasteland",
+          "ruins"
+        ],
+        "lighting": [
+          "glowing"
+        ],
+        "motifs": [
+          "fallout (universe)",
+          "radiation",
+          "explosion",
+          "green glow"
+        ]
+      }
+    },
+    {
+      "id": "time-to-die",
+      "name": "Time to Die",
+      "pitch": "Their creatures shrink one proliferate or -X/-X at a time, and every death feeds you.",
+      "kind": "stretch",
+      "tags": [
+        {
+          "tag": "minus1_counters",
+          "weight": 1.0
+        },
+        {
+          "tag": "proliferate",
+          "weight": 0.6,
+          "role_focus": "enabler"
+        },
+        {
+          "tag": "death_trigger",
+          "weight": 0.5,
+          "role_focus": "payoff"
+        },
+        {
+          "tag": "shrink",
+          "weight": 0.4
+        }
+      ],
+      "art": {
+        "mood": [
+          "grim"
+        ],
+        "motifs": [
+          "skeleton",
+          "undead",
+          "decay"
+        ]
+      }
+    },
+    {
+      "id": "showdown-at-the-oil-rig",
+      "name": "Showdown at the Oil Rig",
+      "pitch": "Phyrexian oil-counter machines that tick up forever while Horrigan guards the rig.",
+      "kind": "stretch",
+      "tags": [
+        {
+          "tag": "oil_counters",
+          "weight": 1.0
+        },
+        {
+          "tag": "proliferate",
+          "weight": 0.6,
+          "role_focus": "enabler"
+        }
+      ],
+      "art": {
+        "setting": [
+          "factory"
+        ],
+        "motifs": [
+          "phyrexian oil",
+          "machine",
+          "smokestack",
+          "smog"
+        ]
+      }
+    },
+    {
+      "id": "impure-strain",
+      "name": "Impure Strain",
+      "pitch": "The Enclave wanted pure humans; you want a warband of mutants that all hit harder together.",
+      "kind": "stretch",
+      "tags": [
+        {
+          "tag": "typal:Mutant",
+          "weight": 1.0
+        },
+        {
+          "tag": "plus1_counters",
+          "weight": 0.5
+        },
+        {
+          "tag": "attack_triggers",
+          "weight": 0.4,
+          "role_focus": "payoff"
+        }
+      ],
+      "art": {
+        "setting": [
+          "wasteland"
+        ],
+        "motifs": [
+          "super mutant",
+          "mutant",
+          "ghoul (fallout)",
+          "power armor"
+        ]
+      }
+    }
+  ]
+}

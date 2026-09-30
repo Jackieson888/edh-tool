@@ -1,0 +1,16 @@
+{
+ "requests": 609,
+ "failed": [],
+ "problems": [
+  "tag-001762: unmatched answer ref=c2 name='Sarkhan, Dragonsoul Ascendant'",
+  "tag-001762: no answer for 'Sarkhan, Dragon Ascendant'",
+  "tag-001637: unmatched answer ref=c3 name='Reconstruction History'",
+  "tag-001637: no answer for 'Reconstruct History'",
+  "tag-001669: unmatched answer ref=c5 name='Resurrection Belief'",
+  "tag-001669: no answer for 'Resurgent Belief'"
+ ],
+ "input": 837339,
+ "output": 428820,
+ "cache_write": 27356,
+ "cache_read": 4137595
+}

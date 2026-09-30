@@ -1,0 +1,28 @@
+# Offline enrichment pipeline settings (Python side).
+
+tagging:
+  model: claude-sonnet-5-5        # quality matters most here; try haiku on a sample and compare
+  cards_per_request: 8            # amortizes the (cached) vocab prompt; smaller = cleaner retries
+  max_tokens: 4000
+  typal_member_strength: 0.5      # strength given to rule-derived "is this creature type" tags
+  min_strength_kept: 0.15         # drop tags the model marks as nearly irrelevant
+
+themes:
+  model: claude-sonnet-5-5
+  themes_per_commander: 6          # store more than the UI shows; rotate which 4 a visitor sees
+  max_tokens: 16000              # the model thinks before answering; 3000 truncated the themes
+  supply_min_strength: 0.4        # a card "supplies" a tag if strength >= this
+  viability_min_cards: 40         # a theme must have this many decent cards in colors
+  viability_min_fit: 0.35         # ...scoring at least this theme_fit
+  max_regenerations: 2
+  min_themes_per_commander: 2     # every commander gets at least this many usable themes
+  viability_relaxed_min_cards: 12 # ...an unviable theme with this many cards is kept as "relaxed"
+  viability_relaxed_min_fit: 0.3  # ...counting cards at this fit
+  fallback_candidates: 12         # broad supply-based themes tried when relaxing still isn't enough
+  art_motif_min_cards: 10         # an art motif must appear on this many legal cards in colors
+
+art:
+  model: claude-sonnet-5-5
+  scope: default                  # default = one illustration per card (~32k); all = every printing's art (~48k)
+  images_per_request: 5
+  max_tokens: 2000

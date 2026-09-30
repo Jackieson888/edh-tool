@@ -1,0 +1,20 @@
+{
+ "requests": 609,
+ "failed": [],
+ "problems": [
+  "tag-000983: unmatched answer ref=c3 name='Hungry Yeti'",
+  "tag-000983: no answer for 'Hungering Yeti'",
+  "tag-000875: unmatched answer ref=c2 name='Graceful Artisan'",
+  "tag-000875: no answer for 'Graceblade Artisan'",
+  "tag-001042: unmatched answer ref=c5 name='Invasion of Dominria // Serra Faithkeeper'",
+  "tag-001042: no answer for 'Invasion of Dominaria // Serra Faithkeeper'",
+  "tag-001005: unmatched answer ref=c3 name='Immininent Doom'",
+  "tag-001005: no answer for 'Imminent Doom'",
+  "tag-000810: unmatched answer ref=c7 name=\"Ghalta and Mavren's Warden\"",
+  "tag-000810: no answer for \"Ghalma's Warden\""
+ ],
+ "input": 849215,
+ "output": 428633,
+ "cache_write": 841197,
+ "cache_read": 3323754
+}

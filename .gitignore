@@ -1,0 +1,16 @@
+# secrets
+.env
+# large / regenerable data
+data/raw/
+data/batch/
+data/cards.jsonl
+data/art.jsonl
+data/art_tags.jsonl
+data/art_tags_vision.jsonl
+data/tmp*
+__pycache__/
+.pytest_cache/
+
+# web
+node_modules/
+web/.next/
