@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ColorPips } from "@/components/ColorPips";
 import { CardImage } from "@/components/CardImage";
+import { RequestThemesButton } from "@/components/RequestThemesButton";
 import { TagChip } from "@/components/TagChip";
 import { getCommanderSummary, getVocab } from "@/lib/data";
 
@@ -40,8 +41,9 @@ export default async function CommanderPage({ params }: PageProps<"/commander/[s
               <TagChip key={t.tag} tag={t.tag} title={vocab.tags[t.tag]?.definition} />
             ))}
           </div>
-          <p className="text-sm text-zinc-500">
+          <p className="flex flex-wrap items-center gap-3 text-sm text-zinc-500">
             {themes.length ? "How do you want this deck to play?" : "Themes for this commander are coming soon."}
+            {!themes.length && <RequestThemesButton oracleId={commander.oracle_id} />}
           </p>
         </div>
       </section>

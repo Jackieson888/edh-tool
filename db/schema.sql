@@ -125,3 +125,24 @@ CREATE TABLE IF NOT EXISTS deck_snapshots (
   cards       jsonb NOT NULL                     -- [{oracle_id, qty, zone}]
 );
 CREATE INDEX IF NOT EXISTS deck_snapshots_by_deck ON deck_snapshots (deck_id, created_at DESC);
+
+-- ------------------------------------------------------------------ theme requests (user demand)
+
+-- "Request themes" clicks on commanders that have no themes yet. One vote per anonymous browser
+-- (random client id, no personal data); theme_requests.request_count is the number of distinct
+-- voters, so the pipeline can run the most-wanted commanders first. References cards, not
+-- commanders, because the loader replaces commanders wholesale. Never touched by the loader.
+CREATE TABLE IF NOT EXISTS theme_request_votes (
+  oracle_id  uuid NOT NULL REFERENCES cards ON DELETE CASCADE,
+  voter_id   uuid NOT NULL,
+  created_at timestamptz NOT NULL DEFAULT now(),
+  PRIMARY KEY (oracle_id, voter_id)
+);
+
+CREATE TABLE IF NOT EXISTS theme_requests (
+  oracle_id         uuid PRIMARY KEY REFERENCES cards ON DELETE CASCADE,
+  request_count     integer NOT NULL DEFAULT 0,
+  first_requested_at timestamptz NOT NULL DEFAULT now(),
+  last_requested_at  timestamptz NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS theme_requests_by_count ON theme_requests (request_count DESC, last_requested_at DESC);

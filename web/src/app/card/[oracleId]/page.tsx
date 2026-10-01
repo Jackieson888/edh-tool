@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { CardImage } from "@/components/CardImage";
 import { ColorIndicator, ManaCost } from "@/components/Mana";
 import { StartDeckButton } from "@/components/deck/StartDeckButton";
+import { RequestThemesButton } from "@/components/RequestThemesButton";
 import { TagChip } from "@/components/TagChip";
 import { getAllCards, getCommanderSummaryByOracle, getVocab } from "@/lib/data";
 import { commandersFor } from "@/lib/suggest";
@@ -82,8 +83,9 @@ export default async function CardPage({
             </p>
           </div>
           {ownThemes.length === 0 ? (
-            <p className="text-sm text-zinc-400">
+            <p className="flex flex-wrap items-center gap-3 text-sm text-zinc-400">
               Themes for this commander are coming soon.
+              <RequestThemesButton oracleId={oracleId} />
             </p>
           ) : (
             <div className="grid gap-4 md:grid-cols-3">
