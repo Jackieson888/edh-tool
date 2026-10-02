@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState, useSyncExternalStore } from "react";
 import { Spinner } from "@/components/Skeleton";
 
 const SEEN_KEY = "edh:themeRequests";
@@ -24,13 +24,20 @@ function clientId(): string {
   return id;
 }
 
+// "Already requested" lives in localStorage; the store lets React read it without an effect.
+const listeners = new Set<() => void>();
+const subscribe = (cb: () => void) => {
+  listeners.add(cb);
+  window.addEventListener("storage", cb);   // another tab requested it
+  return () => { listeners.delete(cb); window.removeEventListener("storage", cb); };
+};
+const requested = (oracleId: string) => read<string[]>(SEEN_KEY, []).includes(oracleId);
+
 /** Lets a visitor ask for themes on a commander that doesn't have any yet. */
 export function RequestThemesButton({ oracleId, className = "" }: { oracleId: string; className?: string }) {
-  const [done, setDone] = useState(false);
+  const done = useSyncExternalStore(subscribe, () => requested(oracleId), () => false);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => { setDone(read<string[]>(SEEN_KEY, []).includes(oracleId)); }, [oracleId]);
 
   async function request() {
     setBusy(true); setError(null);
@@ -41,7 +48,7 @@ export function RequestThemesButton({ oracleId, className = "" }: { oracleId: st
       });
       if (!r.ok) throw new Error((await r.json().catch(() => ({}))).error ?? "Couldn't send your request");
       write(SEEN_KEY, [...new Set([...read<string[]>(SEEN_KEY, []), oracleId])]);
-      setDone(true);
+      listeners.forEach((l) => l());
     } catch (e) {
       setError(e instanceof Error ? e.message : "Something went wrong");
     } finally {
