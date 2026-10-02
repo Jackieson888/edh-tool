@@ -1,7 +1,7 @@
 import { activeThemeIds, deckThemeProfile } from "@edh-tool/engine/deck";
 import { suggestCuts } from "@edh-tool/engine/cuts";
 import { bad, isId, readBody } from "@/lib/api";
-import { getCommanderByOracle, withDeckCards } from "@/lib/data";
+import { getCommanderByOracle, hydrate, withDeckCards } from "@/lib/data";
 import type { CutsRequest, CutsResponse } from "@/lib/types";
 
 // POST { commander, cards: [{ oracle_id, qty, board }], theme } → the weakest cards in the main
@@ -28,11 +28,12 @@ export async function POST(req: Request) {
   const res = suggestCuts(data.index, data.entry, data.themes, main.map((c) => ({ oracle_id: c.oracle_id, qty: c.qty })),
     { activeIds: active, over: Math.max(0, total - limit) });
   const themeNames = active.map((id) => data.themes.find((t) => t.id === id)?.name).filter((x): x is string => !!x);
+  const imgs = await hydrate(res.cuts.map((c) => c.oracle_id));
   const out: CutsResponse = {
     ...res,
     total, limit,
     themes: themeNames,
-    cuts: res.cuts.map((c) => ({ ...c, image: data.index.get(c.oracle_id)?.card.image ?? undefined })),
+    cuts: res.cuts.map((c) => ({ ...c, image: imgs.get(c.oracle_id)?.image })),
   };
   return Response.json(out);
 }

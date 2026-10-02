@@ -162,6 +162,7 @@ def iter_bulk(path: Path):
 def _printing_rank(c: dict) -> tuple:
     """Higher is better: which printing represents the card (flavor text, image)."""
     return (
+        c.get("lang", "en") == "en",     # English printings first: the site shows English card art
         not c.get("digital", False),
         c.get("set_type") not in ("funny", "memorabilia", "token", "minigame", "alchemy"),
         not c.get("promo", False),
@@ -183,7 +184,7 @@ def dedupe_printings(cards, art_sink: dict | None = None) -> list[dict]:
         if not oid:
             continue
         c["oracle_id"] = oid
-        if art_sink is not None:
+        if art_sink is not None and c.get("lang", "en") == "en":   # no Japanese/Spanish/... alternate art
             for a in art_records(c):
                 key = (a["oracle_id"], a["illustration_id"])
                 prev = art_sink.get(key)

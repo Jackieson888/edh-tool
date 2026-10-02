@@ -42,9 +42,10 @@ const cached = <A extends unknown[], T>(load: (...a: A) => Promise<T>, key: (...
 const CARD_COLS = `c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.types, c.supertypes, c.subtypes,
   c.oracle_text, c.power, c.toughness, c.color_identity, c.commander_legal, c.commander_eligible,
   c.edhrec_rank, c.game_changer, c.price_usd, c.image, c.image_small, c.art_crop, c.artist, c.scryfall_uri`;
-// the scoring pool only needs what scoring and the pick tiles use
+// The scoring pool only needs what scoring uses. Images and links are ~40% of a row, so they are
+// left out and fetched with hydrate() for the handful of cards a page actually shows.
 const POOL_COLS = `c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.types, c.supertypes, c.color_identity,
-  c.commander_legal, c.edhrec_rank, c.game_changer, c.price_usd, c.image, c.scryfall_uri, c.quality`;
+  c.commander_legal, c.edhrec_rank, c.game_changer, c.price_usd, c.quality`;
 
 const clean = <T extends object>(row: T): T =>
   Object.fromEntries(Object.entries(row).filter(([, v]) => v !== null && v !== "")) as T;
@@ -56,21 +57,92 @@ export const getVocab = cached(async (): Promise<Vocab> => {
   return { tags: Object.fromEntries(r.rows.map((x) => [x.tag, { category: x.category, definition: x.definition }])) };
 }, () => "vocab");
 
-// ---------------------------------------------------------------- every legal card (search, import, display)
+// ---------------------------------------------------------------- cards on demand (search, import, display)
+// Never "load every card": that was ~9 MB per cold server instance. Each lookup asks Postgres for
+// just the rows it needs, and recent rows are kept per instance.
 
-export const getAllCards = cached(async () => {
+const LITE_COLS = `c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.color_identity, c.image, c.art_crop,
+  c.commander_eligible, c.game_changer,
+  (c.oracle_text ILIKE '%a deck can have any number of cards named%') AS any_number,
+  (c.quality IS NOT NULL OR EXISTS (SELECT 1 FROM card_tags t WHERE t.oracle_id = c.oracle_id)) AS tagged`;
+// engine normalizeName() in SQL: lower-case, accents gone, letters and digits only (indexed, see schema.sql)
+const NAME_KEY = `regexp_replace(c.name_norm, '[^a-z0-9]', '', 'g')`;
+
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const lite = ({ any_number, tagged, ...row }: Record<string, any>): CardLite => ({
+  ...clean(row), cmc: row.cmc ?? 0,
+  ...(any_number ? { any_number: true } : {}), ...(tagged ? { tagged: true } : {}),
+}) as CardLite;
+
+const LITE_TTL_MS = 30 * 60_000, LITE_MAX = 4000;
+const liteCache = new Map<string, { at: number; card: CardLite }>();
+const remember = (c: CardLite) => {
+  liteCache.delete(c.oracle_id);
+  liteCache.set(c.oracle_id, { at: Date.now(), card: c });
+  while (liteCache.size > LITE_MAX) liteCache.delete(liteCache.keys().next().value!);
+};
+
+/** Display data for these cards, in the order asked (unknown / illegal ids are dropped). */
+export async function cardsByIds(ids: string[]): Promise<CardLite[]> {
+  const uniq = [...new Set(ids)];
+  const now = Date.now();
+  const missing = uniq.filter((id) => { const h = liteCache.get(id); return !h || now - h.at >= LITE_TTL_MS; });
+  if (missing.length) {
+    const r = await db().query(`SELECT ${LITE_COLS} FROM cards c WHERE c.commander_legal AND c.oracle_id = ANY($1::uuid[])`, [missing]);
+    for (const row of r.rows) remember(lite(row));
+  }
+  return ids.flatMap((id) => { const h = liteCache.get(id); return h ? [h.card] : []; });
+}
+
+export async function getCard(id: string): Promise<CardLite | null> {
+  if (!/^[0-9a-f-]{36}$/.test(id)) return null;
+  return (await cardsByIds([id]))[0] ?? null;
+}
+
+/** Card image and Scryfall link for the few cards a page shows (the pool leaves them out). */
+export async function hydrate(ids: string[]): Promise<Map<string, { image?: string; scryfall_uri?: string }>> {
+  const uniq = [...new Set(ids)];
+  if (!uniq.length) return new Map();
+  const r = await db().query("SELECT oracle_id, image, scryfall_uri FROM cards WHERE oracle_id = ANY($1::uuid[])", [uniq]);
+  return new Map(r.rows.map((x) => [x.oracle_id as string, clean({ image: x.image, scryfall_uri: x.scryfall_uri })]));
+}
+
+/** Name search: cards whose name starts with the query first (shortest first), then ones containing it. */
+export async function searchCards(q: string, limit: number): Promise<CardLite[]> {
+  if (!/^[a-z0-9]{2,}$/.test(q)) return [];
   const r = await db().query(
-    `SELECT c.oracle_id, c.name, c.mana_cost, c.cmc, c.type_line, c.color_identity, c.image, c.art_crop,
-            c.commander_eligible, c.game_changer,
-            (c.oracle_text ILIKE '%a deck can have any number of cards named%') AS any_number,
-            (c.quality IS NOT NULL OR EXISTS (SELECT 1 FROM card_tags t WHERE t.oracle_id = c.oracle_id)) AS tagged
-       FROM cards c WHERE c.commander_legal ORDER BY c.name`);
-  const cards: CardLite[] = r.rows.map(({ any_number, tagged, ...row }) => ({
-    ...clean(row), cmc: row.cmc ?? 0,
-    ...(any_number ? { any_number: true } : {}), ...(tagged ? { tagged: true } : {}),
-  }));
-  return { cards, byId: new Map(cards.map((c) => [c.oracle_id, c])), nameIndex: buildNameIndex(cards) };
-}, () => "all");
+    `SELECT ${LITE_COLS} FROM cards c
+      WHERE c.commander_legal AND ${NAME_KEY} LIKE $1
+      ORDER BY (${NAME_KEY} LIKE $2) DESC, length(c.name), c.name LIMIT $3`,
+    [`%${q}%`, `${q}%`, limit]);
+  return r.rows.map((row) => { const c = lite(row); remember(c); return c; });
+}
+
+/**
+ * Cards matching these already-normalized names (full names and each face of "A // B" cards),
+ * as the same name index the importer has always used, built from just the candidates.
+ */
+export async function nameCandidates(keys: string[]) {
+  const uniq = [...new Set(keys.filter(Boolean))];
+  if (!uniq.length) return { nameIndex: new Map<string, string>(), cards: [] as CardLite[] };
+  const r = await db().query(
+    `SELECT ${LITE_COLS} FROM cards c WHERE c.commander_legal AND ${NAME_KEY} = ANY($1::text[])
+     UNION
+     SELECT ${LITE_COLS} FROM cards c WHERE c.commander_legal AND c.name_norm LIKE '% // %'
+        AND EXISTS (SELECT 1 FROM unnest(string_to_array(c.name_norm, ' // ')) f
+                     WHERE regexp_replace(f, '[^a-z0-9]', '', 'g') = ANY($1::text[]))`, [uniq]);
+  const cards = r.rows.map((row) => { const c = lite(row); remember(c); return c; });
+  return { nameIndex: buildNameIndex(cards), cards };
+}
+
+/** "Did you mean" for a name that matched nothing: nearest card names by trigram similarity. */
+export async function similarNames(key: string, limit = 3): Promise<{ oracle_id: string; name: string; score: number }[]> {
+  if (key.length < 3) return [];
+  const r = await db().query(
+    `SELECT c.oracle_id, c.name, similarity(${NAME_KEY}, $1) AS score FROM cards c
+      WHERE c.commander_legal AND ${NAME_KEY} % $1 ORDER BY score DESC, c.name LIMIT $2`, [key, limit]);
+  return r.rows.map((x) => ({ oracle_id: x.oracle_id, name: x.name, score: +Number(x.score).toFixed(2) }));
+}
 
 // ---------------------------------------------------------------- one commander
 
@@ -204,7 +276,9 @@ export async function withDeckCards(data: CommanderData, ids: string[]): Promise
 /** Commanders with themes, with their own index entries: small (hundreds of rows), kept per instance. */
 const themedCommanders = cached(async () => {
   const r = await db().query(
-    `SELECT m.slug, m.themes, m.rank_ceiling, ${POOL_COLS} FROM commanders m JOIN cards c USING (oracle_id)
+    `SELECT m.slug, m.rank_ceiling, ${POOL_COLS},
+            (SELECT jsonb_agg(t - 'pitch' - 'art') FROM jsonb_array_elements(m.themes) t) AS themes  -- scoring doesn't use pitch/art
+       FROM commanders m JOIN cards c USING (oracle_id)
       WHERE m.themes IS NOT NULL AND c.commander_legal`);
   const ids = r.rows.map((x) => x.oracle_id);
   const t = await db().query("SELECT oracle_id, tag, role, strength FROM card_tags WHERE oracle_id = ANY($1::uuid[])", [ids]);

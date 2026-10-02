@@ -1,5 +1,5 @@
 import { bad, isId, readBody } from "@/lib/api";
-import { getAllCards } from "@/lib/data";
+import { cardsByIds } from "@/lib/data";
 
 // POST { ids } → display data for those cards (the deck builder stores ids only).
 export async function POST(req: Request) {
@@ -7,6 +7,5 @@ export async function POST(req: Request) {
   if (!body || !Array.isArray(body.ids) || body.ids.length > 500 || !body.ids.every(isId)) {
     return bad("expected { ids: oracle_id[] } (max 500)");
   }
-  const { byId } = await getAllCards();
-  return Response.json({ cards: body.ids.map((id) => byId.get(id)).filter(Boolean) });
+  return Response.json({ cards: await cardsByIds(body.ids) });
 }

@@ -1,6 +1,6 @@
 import { ROLE_TARGETS } from "@edh-tool/engine/analytics";
 import { bad, isId, readBody } from "@/lib/api";
-import { getAllCards } from "@/lib/data";
+import { cardsByIds } from "@/lib/data";
 import { db } from "@/lib/db";
 
 interface Req { commanders: string[]; exclude: string[]; role: string }
@@ -26,6 +26,5 @@ export async function POST(req: Request) {
                c.quality DESC NULLS LAST, c.edhrec_rank ASC NULLS LAST
       LIMIT 8`,
     [body.commanders, role.tags, [...body.exclude, ...body.commanders]]);
-  const { byId } = await getAllCards();
-  return Response.json({ cards: r.rows.map((x) => byId.get(x.oracle_id)).filter(Boolean) });
+  return Response.json({ cards: await cardsByIds(r.rows.map((x) => x.oracle_id)) });
 }

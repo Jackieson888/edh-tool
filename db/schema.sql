@@ -146,3 +146,7 @@ CREATE TABLE IF NOT EXISTS theme_requests (
   last_requested_at  timestamptz NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS theme_requests_by_count ON theme_requests (request_count DESC, last_requested_at DESC);
+
+-- Name lookups (search, deck import, "did you mean") run on the letters-and-digits form of the name.
+CREATE INDEX IF NOT EXISTS cards_name_key ON cards ((regexp_replace(name_norm, '[^a-z0-9]', '', 'g')));
+CREATE INDEX IF NOT EXISTS cards_name_key_trgm ON cards USING gin ((regexp_replace(name_norm, '[^a-z0-9]', '', 'g')) gin_trgm_ops);

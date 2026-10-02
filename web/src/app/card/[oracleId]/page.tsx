@@ -5,22 +5,26 @@ import { ColorIndicator, ManaCost } from "@/components/Mana";
 import { StartDeckButton } from "@/components/deck/StartDeckButton";
 import { RequestThemesButton } from "@/components/RequestThemesButton";
 import { TagChip } from "@/components/TagChip";
-import { getAllCards, getCommanderSummaryByOracle, getVocab } from "@/lib/data";
+import { getCard, getCommanderSummaryByOracle, getVocab } from "@/lib/data";
 import { commandersFor } from "@/lib/suggest";
+
+// Rendered on first visit, then served from cache for six hours (bots crawling cards don't hit the database).
+export const revalidate = 21600;
+export async function generateStaticParams() {
+  return [];
+}
 
 export async function generateMetadata({
   params,
 }: PageProps<"/card/[oracleId]">) {
-  const { byId } = await getAllCards();
-  return { title: byId.get((await params).oracleId)?.name ?? "Card" };
+  return { title: (await getCard((await params).oracleId))?.name ?? "Card" };
 }
 
 export default async function CardPage({
   params,
 }: PageProps<"/card/[oracleId]">) {
   const { oracleId } = await params;
-  const { byId } = await getAllCards();
-  const card = byId.get(oracleId);
+  const card = await getCard(oracleId);
   if (!card) notFound();
   const [commanders, ownSummary, vocab] = await Promise.all([
     card.tagged ? commandersFor([oracleId], 13) : Promise.resolve([]),

@@ -9,7 +9,7 @@ import {
 import { CardImage } from "@/components/CardImage";
 import { StartThemeDeckButton } from "@/components/deck/StartThemeDeckButton";
 import { TagChip } from "@/components/TagChip";
-import { getCommander, getVocab } from "@/lib/data";
+import { getCommander, getVocab, hydrate } from "@/lib/data";
 import { tagLabel } from "@/lib/labels";
 
 // Rendered per request: the reroll number (?r=) picks a different seeded batch.
@@ -53,6 +53,7 @@ export default async function ThemePage({
       )
     : [];
   const q = (r: number) => `?r=${r}${debug ? "&debug=1" : ""}`;
+  const extra = await hydrate(picks.map((p) => p.oracle_id)); // the pool leaves images/links out
 
   return (
     <div className="space-y-8">
@@ -105,7 +106,7 @@ export default async function ThemePage({
 
       <ul className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
         {picks.map((p) => (
-          <Pick key={p.oracle_id} pick={p} data={data} />
+          <Pick key={p.oracle_id} pick={p} data={data} extra={extra.get(p.oracle_id)} />
         ))}
       </ul>
 
@@ -130,9 +131,11 @@ export default async function ThemePage({
 function Pick({
   pick,
   data,
+  extra,
 }: {
   pick: ScoredCard;
   data: NonNullable<Awaited<ReturnType<typeof getCommander>>>;
+  extra?: { image?: string; scryfall_uri?: string };
 }) {
   const card = data.index.get(pick.oracle_id)!.card;
   const ill = pick.parts.illustration;
@@ -141,8 +144,8 @@ function Pick({
   const why = pick.parts.matched.filter((m) => m.contrib > 0);
   return (
     <li className="space-y-2">
-      <a href={card.scryfall_uri} target="_blank" rel="noreferrer">
-        <CardImage src={ill?.image ?? card.image} alt={card.name} />
+      <a href={extra?.scryfall_uri} target="_blank" rel="noreferrer">
+        <CardImage src={ill?.image ?? extra?.image} alt={card.name} />
       </a>
       <div className="flex flex-wrap gap-1 mt-2">
         {gem && (

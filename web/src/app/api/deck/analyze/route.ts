@@ -1,7 +1,7 @@
 import { DEFAULT_CONFIG } from "@edh-tool/engine";
 import { activeThemeIds, deckRecommendations, deckThemeProfile } from "@edh-tool/engine/deck";
 import { bad, isId, readBody } from "@/lib/api";
-import { getCommanderByOracle, withDeckCards } from "@/lib/data";
+import { getCommanderByOracle, hydrate, withDeckCards } from "@/lib/data";
 import type { AnalyzeRequest, AnalyzeResponse } from "@/lib/types";
 
 const GEM_OBSCURITY = 0.82;   // same bar as the theme page's "Hidden gem" badge
@@ -31,6 +31,13 @@ export async function POST(req: Request) {
     for (const c of row.cards) if ((best.get(c.oracle_id)?.fit ?? 0) < c.fit) best.set(c.oracle_id, { fit: c.fit, name });
   }
 
+  const recSets = active.map((id) => {
+    const theme = data.themes.find((t) => t.id === id)!;
+    const { picks, eligible } = deckRecommendations(data.index, data.entry, theme, mainIds, DEFAULT_CONFIG,
+      { seed, maybeIds, k: active.length > 1 ? 6 : 10 });
+    return { id, eligible, picks };
+  });
+  const imgs = await hydrate(recSets.flatMap((s) => s.picks.map((p) => p.oracle_id)));   // the pool leaves images out
   const res: AnalyzeResponse = {
     commander: { oracle_id: data.commander.oracle_id, name: data.commander.name, slug: data.slug,
       color_identity: data.commander.color_identity },
@@ -44,27 +51,22 @@ export async function POST(req: Request) {
     active,
     inferred,
     cardThemes: Object.fromEntries([...best].map(([id, b]) => [id, b.name])),
-    recs: active.map((id) => {
-      const theme = data.themes.find((t) => t.id === id)!;
-      const { picks, eligible } = deckRecommendations(data.index, data.entry, theme, mainIds, DEFAULT_CONFIG,
-        { seed, maybeIds, k: active.length > 1 ? 6 : 10 });
-      return {
-        themeId: id,
-        eligible,
-        picks: picks.map((p) => {
-          const card = data.index.get(p.oracle_id)!.card;
-          return {
-            oracle_id: p.oracle_id, name: p.name,
-            image: p.parts.illustration?.image ?? card.image ?? undefined,
-            gem: p.parts.obscurity >= GEM_OBSCURITY,
-            inMaybe: p.deck.inMaybe,
-            matched: p.parts.matched.filter((m) => m.contrib > 0).map((m) => ({ tag: m.tag, anchor: m.anchor, role: m.role })),
-            shared: p.deck.shared,
-            edhrec_rank: card.edhrec_rank, price_usd: card.price_usd,
-          };
-        }),
-      };
-    }),
+    recs: recSets.map(({ id, eligible, picks }) => ({
+      themeId: id,
+      eligible,
+      picks: picks.map((p) => {
+        const card = data.index.get(p.oracle_id)!.card;
+        return {
+          oracle_id: p.oracle_id, name: p.name,
+          image: p.parts.illustration?.image ?? imgs.get(p.oracle_id)?.image,
+          gem: p.parts.obscurity >= GEM_OBSCURITY,
+          inMaybe: p.deck.inMaybe,
+          matched: p.parts.matched.filter((m) => m.contrib > 0).map((m) => ({ tag: m.tag, anchor: m.anchor, role: m.role })),
+          shared: p.deck.shared,
+          edhrec_rank: card.edhrec_rank, price_usd: card.price_usd,
+        };
+      }),
+    })),
   };
   return Response.json(res);
 }
