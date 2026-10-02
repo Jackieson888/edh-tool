@@ -1,8 +1,10 @@
 import "server-only";
 import { buildIndex, type Card, type CardTag, type Index, type IndexEntry, type Theme } from "@edh-tool/engine";
 import { buildNameIndex } from "@edh-tool/engine/decklist";
+import { cache } from "react";
 import type { CardLite } from "@/lib/types";
 import { db } from "./db";
+import { ttlMap } from "./ttlMap";
 
 // Everything comes from Postgres (DATABASE_URL); `python -m pipeline.load_db` fills it.
 // Nothing here loads "the whole pool": a commander's scoring pool is fetched on demand
@@ -94,17 +96,32 @@ export async function cardsByIds(ids: string[]): Promise<CardLite[]> {
   return ids.flatMap((id) => { const h = liteCache.get(id); return h ? [h.card] : []; });
 }
 
-export async function getCard(id: string): Promise<CardLite | null> {
+// React cache(): generateMetadata and the page ask for the same card in one render; query once.
+export const getCard = cache(async (id: string): Promise<CardLite | null> => {
   if (!/^[0-9a-f-]{36}$/.test(id)) return null;
   return (await cardsByIds([id]))[0] ?? null;
-}
+});
 
 /** Card image and Scryfall link for the few cards a page shows (the pool leaves them out). */
-export async function hydrate(ids: string[]): Promise<Map<string, { image?: string; scryfall_uri?: string }>> {
-  const uniq = [...new Set(ids)];
-  if (!uniq.length) return new Map();
-  const r = await db().query("SELECT oracle_id, image, scryfall_uri FROM cards WHERE oracle_id = ANY($1::uuid[])", [uniq]);
-  return new Map(r.rows.map((x) => [x.oracle_id as string, clean({ image: x.image, scryfall_uri: x.scryfall_uri })]));
+type Hydrated = { image?: string; scryfall_uri?: string };
+const hydrated = ttlMap<Hydrated>(4000);
+
+export async function hydrate(ids: string[]): Promise<Map<string, Hydrated>> {
+  const out = new Map<string, Hydrated>();
+  const missing: string[] = [];
+  for (const id of new Set(ids)) {
+    const h = hydrated.get(id);
+    if (h) out.set(id, h); else missing.push(id);
+  }
+  if (missing.length) {
+    const r = await db().query("SELECT oracle_id, image, scryfall_uri FROM cards WHERE oracle_id = ANY($1::uuid[])", [missing]);
+    for (const x of r.rows) {
+      const v = clean({ image: x.image, scryfall_uri: x.scryfall_uri });
+      hydrated.set(x.oracle_id, v);
+      out.set(x.oracle_id, v);
+    }
+  }
+  return out;
 }
 
 /** Name search: cards whose name starts with the query first (shortest first), then ones containing it. */
@@ -122,26 +139,44 @@ export async function searchCards(q: string, limit: number): Promise<CardLite[]>
  * Cards matching these already-normalized names (full names and each face of "A // B" cards),
  * as the same name index the importer has always used, built from just the candidates.
  */
+// Face keys of every two-faced card (~2k rows). Matching a face needs them all, and doing it in SQL
+// meant scanning the whole cards table on every import; here it is one small query per instance.
+const multiFace = cached(async () => {
+  const r = await db().query("SELECT oracle_id, name_norm FROM cards c WHERE c.commander_legal AND c.name_norm LIKE '% // %'");
+  return r.rows.map((x) => ({
+    id: x.oracle_id as string,
+    faces: (x.name_norm as string).split(" // ").map((f) => f.replace(/[^a-z0-9]/g, "")),
+  }));
+}, () => "faces");
+
 export async function nameCandidates(keys: string[]) {
   const uniq = [...new Set(keys.filter(Boolean))];
   if (!uniq.length) return { nameIndex: new Map<string, string>(), cards: [] as CardLite[] };
+  const want = new Set(uniq);
+  const faceIds = (await multiFace()).filter((m) => m.faces.some((f) => want.has(f))).map((m) => m.id);
   const r = await db().query(
-    `SELECT ${LITE_COLS} FROM cards c WHERE c.commander_legal AND ${NAME_KEY} = ANY($1::text[])
-     UNION
-     SELECT ${LITE_COLS} FROM cards c WHERE c.commander_legal AND c.name_norm LIKE '% // %'
-        AND EXISTS (SELECT 1 FROM unnest(string_to_array(c.name_norm, ' // ')) f
-                     WHERE regexp_replace(f, '[^a-z0-9]', '', 'g') = ANY($1::text[]))`, [uniq]);
+    `SELECT ${LITE_COLS} FROM cards c
+      WHERE c.commander_legal AND (${NAME_KEY} = ANY($1::text[]) OR c.oracle_id = ANY($2::uuid[]))`, [uniq, faceIds]);
   const cards = r.rows.map((row) => { const c = lite(row); remember(c); return c; });
   return { nameIndex: buildNameIndex(cards), cards };
 }
 
-/** "Did you mean" for a name that matched nothing: nearest card names by trigram similarity. */
-export async function similarNames(key: string, limit = 3): Promise<{ oracle_id: string; name: string; score: number }[]> {
-  if (key.length < 3) return [];
+/** "Did you mean" for names that matched nothing: nearest card names by trigram similarity, one
+ *  query for the whole batch. Result i belongs to keys[i] (keys under 3 characters get none). */
+export async function similarNames(keys: string[], limit = 3): Promise<{ oracle_id: string; name: string; score: number }[][]> {
+  const out = keys.map(() => [] as { oracle_id: string; name: string; score: number }[]);
+  const at = keys.flatMap((k, i) => (k.length >= 3 ? [i] : []));
+  if (!at.length) return out;
   const r = await db().query(
-    `SELECT c.oracle_id, c.name, similarity(${NAME_KEY}, $1) AS score FROM cards c
-      WHERE c.commander_legal AND ${NAME_KEY} % $1 ORDER BY score DESC, c.name LIMIT $2`, [key, limit]);
-  return r.rows.map((x) => ({ oracle_id: x.oracle_id, name: x.name, score: +Number(x.score).toFixed(2) }));
+    `SELECT k.i, s.oracle_id, s.name, s.score
+       FROM unnest($1::text[]) WITH ORDINALITY AS k(key, i)
+       CROSS JOIN LATERAL (
+         SELECT c.oracle_id, c.name, similarity(${NAME_KEY}, k.key) AS score FROM cards c
+          WHERE c.commander_legal AND ${NAME_KEY} % k.key ORDER BY score DESC, c.name LIMIT $2) s
+      ORDER BY k.i, s.score DESC, s.name`, [at.map((i) => keys[i]), limit]);
+  for (const x of r.rows)
+    out[at[Number(x.i) - 1]].push({ oracle_id: x.oracle_id, name: x.name, score: +Number(x.score).toFixed(2) });
+  return out;
 }
 
 // ---------------------------------------------------------------- one commander
@@ -151,24 +186,38 @@ interface Head { card: Card; themes: Theme[]; rankCeiling: number | null; mask: 
 async function head(slug: string): Promise<Head | null> {
   if (!/^[a-z0-9-]+$/.test(slug)) return null;
   const r = await db().query(
-    `SELECT ${CARD_COLS}, m.themes, m.rank_ceiling, m.ci_mask FROM commanders m JOIN cards c USING (oracle_id) WHERE m.slug = $1`,
+    `SELECT ${CARD_COLS}, m.themes, m.rank_ceiling, m.ci_mask,
+            (SELECT COALESCE(jsonb_agg(jsonb_build_object('tag', t.tag, 'role', t.role, 'strength', t.strength)
+                                       ORDER BY t.strength DESC), '[]'::jsonb)
+               FROM card_tags t WHERE t.oracle_id = c.oracle_id) AS own_tags
+       FROM commanders m JOIN cards c USING (oracle_id) WHERE m.slug = $1`,
     [slug]);
   if (!r.rowCount) return null;
-  const { themes, rank_ceiling, ci_mask, ...card } = r.rows[0];
-  const t = await db().query("SELECT tag, role, strength FROM card_tags WHERE oracle_id = $1 ORDER BY strength DESC", [card.oracle_id]);
-  return { card: clean(card) as Card, themes: (themes ?? []) as Theme[], rankCeiling: rank_ceiling, mask: ci_mask, tags: t.rows };
+  const { themes, rank_ceiling, ci_mask, own_tags, ...card } = r.rows[0];
+  return { card: clean(card) as Card, themes: (themes ?? []) as Theme[], rankCeiling: rank_ceiling, mask: ci_mask, tags: own_tags as CardTag[] };
 }
 
 /** Commander card, themes and own tags only: enough for the theme picker page. */
-export async function getCommanderSummary(slug: string): Promise<CommanderSummary | null> {
+export const getCommanderSummary = cache(async (slug: string): Promise<CommanderSummary | null> => {
   const h = await head(slug);
   return h && { slug, commander: h.card, themes: h.themes, tags: h.tags };
+});
+
+// oracle id -> slug only changes when the catalog is reloaded, and every deck request needs it.
+const slugs = ttlMap<string | null>(2000);
+async function slugOf(oracleId: string): Promise<string | null> {
+  const hit = slugs.get(oracleId);
+  if (hit !== undefined) return hit;
+  const r = await db().query("SELECT slug FROM commanders WHERE oracle_id = $1", [oracleId]);
+  const slug = (r.rows[0]?.slug as string | undefined) ?? null;
+  slugs.set(oracleId, slug);
+  return slug;
 }
 
 /** Themes for a commander looked up by card id (the card page); null when it isn't a commander. */
 export async function getCommanderSummaryByOracle(oracleId: string): Promise<CommanderSummary | null> {
-  const r = await db().query("SELECT slug FROM commanders WHERE oracle_id = $1", [oracleId]);
-  return r.rowCount ? getCommanderSummary(r.rows[0].slug) : null;
+  const slug = await slugOf(oracleId);
+  return slug ? getCommanderSummary(slug) : null;
 }
 
 const escRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -243,19 +292,35 @@ export const getCommander = cached((slug: string) => loadCommander(slug), (slug)
 
 export async function getCommanderByOracle(oracleId: string): Promise<CommanderData | null> {
   if (!/^[0-9a-f-]{36}$/.test(oracleId)) return null;
-  const r = await db().query("SELECT slug FROM commanders WHERE oracle_id = $1", [oracleId]);
-  return r.rowCount ? getCommander(r.rows[0].slug) : null;
+  const slug = await slugOf(oracleId);
+  return slug ? getCommander(slug) : null;
 }
+
+// A deck's cards are re-analyzed on every edit, so keep each one's rows (null card = not tagged or not legal).
+type Row = Record<string, any>; // eslint-disable-line @typescript-eslint/no-explicit-any
+const taggedCache = ttlMap<{ card: Row | null; tags: Row[] }>(3000);
 
 /** The tagged cards among `ids`, as index rows (any legal card, whether or not it is in a commander's pool). */
 async function taggedRows(ids: string[]) {
-  if (!ids.length) return { cards: [] as Card[], cardTags: [] as ReturnType<typeof assemble>["cardTags"] };
-  const [c, t] = await Promise.all([
-    db().query(`SELECT ${POOL_COLS} FROM cards c WHERE c.oracle_id = ANY($1::uuid[]) AND c.commander_legal
-                  AND (c.quality IS NOT NULL OR EXISTS (SELECT 1 FROM card_tags x WHERE x.oracle_id = c.oracle_id))`, [ids]),
-    db().query("SELECT oracle_id, tag, role, strength FROM card_tags WHERE oracle_id = ANY($1::uuid[])", [ids]),
-  ]);
-  return assemble(c.rows, t.rows);
+  const want = [...new Set(ids)];
+  const missing = want.filter((id) => taggedCache.get(id) === undefined);
+  if (missing.length) {
+    const [c, t] = await Promise.all([
+      db().query(`SELECT ${POOL_COLS} FROM cards c WHERE c.oracle_id = ANY($1::uuid[]) AND c.commander_legal
+                    AND (c.quality IS NOT NULL OR EXISTS (SELECT 1 FROM card_tags x WHERE x.oracle_id = c.oracle_id))`, [missing]),
+      db().query("SELECT oracle_id, tag, role, strength FROM card_tags WHERE oracle_id = ANY($1::uuid[])", [missing]),
+    ]);
+    const cardOf = new Map<string, Row>(c.rows.map((x) => [x.oracle_id as string, x]));
+    const tagsOf = new Map<string, Row[]>();
+    for (const x of t.rows) (tagsOf.get(x.oracle_id) ?? tagsOf.set(x.oracle_id, []).get(x.oracle_id)!).push(x);
+    for (const id of missing) taggedCache.set(id, { card: cardOf.get(id) ?? null, tags: tagsOf.get(id) ?? [] });
+  }
+  const cardRows: Row[] = [], tagRows: Row[] = [];
+  for (const id of want) {
+    const h = taggedCache.get(id);
+    if (h?.card) { cardRows.push(h.card); tagRows.push(...h.tags); }
+  }
+  return assemble(cardRows, tagRows);
 }
 
 /**

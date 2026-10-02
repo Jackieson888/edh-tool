@@ -6,10 +6,29 @@ import { useEffect, useRef } from "react";
    Scryfall's guidelines ask that card images aren't altered, so no re-encoding/cropping.
    The tilt/glare below is a CSS transform plus an overlay; the image itself is untouched. */
 
-const MAX_TILT = 10; // degrees
-const SCROLL_TILT = 8; // degrees, for touch / no-hover devices
+const MAX_TILT = 6; // degrees
+const SCROLL_TILT = 4; // degrees, for touch / no-hover devices
 
-export function CardImage({ src, alt, className = "" }: { src?: string | null; alt: string; className?: string }) {
+/** Lime marks a top pick, amber a hidden gem; both is amber over a lime gap. Kept soft with some transparency.
+ *  Full class names (not `ring-${color}`) so Tailwind can see them. */
+export type CardHighlight = "pick" | "gem" | "both";
+const HIGHLIGHT: Record<CardHighlight, string> = {
+  pick: "ring-1 ring-amber-400/40 ring-offset-1 ring-offset-transparent",
+  gem: "ring-1 ring-sky-400/40 ring-offset-1 ring-offset-transparent",
+  both: "ring-1 ring-lime-400/40 ring-offset-1 ring-offset-transparent",
+};
+
+export function CardImage({
+  src,
+  alt,
+  className = "",
+  highlight,
+}: {
+  src?: string | null;
+  alt: string;
+  className?: string;
+  highlight?: CardHighlight;
+}) {
   const wrapRef = useRef<HTMLDivElement>(null);
   const tiltRef = useRef<HTMLDivElement>(null);
 
@@ -39,8 +58,12 @@ export function CardImage({ src, alt, className = "" }: { src?: string | null; a
   useEffect(() => {
     const wrap = wrapRef.current;
     if (!wrap) return;
-    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const canHover = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    const reduced = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+    const canHover = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
     if (reduced || canHover) return;
 
     let frame = 0;
@@ -49,7 +72,10 @@ export function CardImage({ src, alt, className = "" }: { src?: string | null; a
       const r = wrap.getBoundingClientRect();
       const vh = window.innerHeight;
       // -1 at the top of the viewport, 0 at center, 1 at the bottom
-      const p = Math.max(-1, Math.min(1, (r.top + r.height / 2 - vh / 2) / (vh / 2)));
+      const p = Math.max(
+        -1,
+        Math.min(1, (r.top + r.height / 2 - vh / 2) / (vh / 2)),
+      );
       const el = tiltRef.current;
       if (!el) return;
       el.style.setProperty("--rx", `${(-p * SCROLL_TILT).toFixed(2)}deg`);
@@ -84,35 +110,60 @@ export function CardImage({ src, alt, className = "" }: { src?: string | null; a
 
   if (!src) {
     return (
-      <div className={`grid aspect-[488/680] place-items-center rounded-[4.75%] bg-zinc-800 p-4 text-center text-sm ${className}`}>
+      <div
+        className={`grid aspect-[488/680] place-items-center rounded-[4.75%] bg-zinc-800 p-4 text-center text-sm ${highlight ? HIGHLIGHT[highlight] : ""} ${className}`}
+      >
         {alt}
       </div>
     );
   }
   return (
-    <div ref={wrapRef} className={`card-tilt-wrap ${className}`}
+    <div
+      ref={wrapRef}
+      className={`card-tilt-wrap ${className}`}
       style={{ perspective: "800px" }}
       onPointerMove={(e) => {
         if (e.pointerType !== "mouse") return;
         const r = e.currentTarget.getBoundingClientRect();
-        setTilt(((e.clientX - r.left) / r.width) * 2 - 1, ((e.clientY - r.top) / r.height) * 2 - 1, 1.03);
+        setTilt(
+          ((e.clientX - r.left) / r.width) * 2 - 1,
+          ((e.clientY - r.top) / r.height) * 2 - 1,
+          1.03,
+        );
       }}
-      onPointerLeave={(e) => { if (e.pointerType === "mouse") reset(); }}>
-      <div ref={tiltRef} className="relative rounded-[4.75%] will-change-transform motion-reduce:!transform-none"
+      onPointerLeave={(e) => {
+        if (e.pointerType === "mouse") reset();
+      }}
+    >
+      <div
+        ref={tiltRef}
+        className={`relative rounded-[4.75%] will-change-transform motion-reduce:!transform-none ${highlight ? HIGHLIGHT[highlight] : ""}`}
         style={{
-          transform: "rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--scale, 1))",
+          transform:
+            "rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(var(--scale, 1))",
           transition: "transform 150ms ease-out",
           transformStyle: "preserve-3d",
-        }}>
-        <img src={src} alt={alt} loading="lazy" width={488} height={680}
-          className="aspect-[488/680] h-auto w-full rounded-[4.75%] shadow-lg shadow-black/40" />
-        <div aria-hidden className="pointer-events-none absolute inset-0 rounded-[4.75%] motion-reduce:hidden"
+        }}
+      >
+        <img
+          src={src}
+          alt={alt}
+          loading="lazy"
+          width={488}
+          height={680}
+          className="aspect-[488/680] h-auto w-full rounded-[4.75%] shadow-lg shadow-black/40"
+        />
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-0 rounded-[4.75%] motion-reduce:hidden"
           style={{
             opacity: "calc(var(--glare, 0) * 0.35)",
-            background: "radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.9), transparent 55%)",
+            background:
+              "radial-gradient(circle at var(--gx, 50%) var(--gy, 50%), rgba(255,255,255,0.9), transparent 55%)",
             mixBlendMode: "soft-light",
             transition: "opacity 150ms ease-out",
-          }} />
+          }}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 import { normalizeName, parseDecklist, resolveEntries } from "@edh-tool/engine/decklist";
 import { bad, readBody } from "@/lib/api";
-import { cardsByIds, nameCandidates, similarNames } from "@/lib/data";
+import { nameCandidates, similarNames } from "@/lib/data";
 
 // POST { text } → the parsed list matched to cards, plus "did you mean" for lines that didn't match.
 export async function POST(req: Request) {
@@ -16,7 +16,7 @@ export async function POST(req: Request) {
   const r = resolveEntries(entries, nameIndex);
 
   const unresolved = r.unresolved.slice(0, 40);        // suggestions are a nicety; cap the extra queries
-  const suggestions = await Promise.all(unresolved.map((u) => similarNames(normalizeName(u.name), 3)));
+  const suggestions = await similarNames(unresolved.map((u) => normalizeName(u.name)), 3);   // one query for all of them
   const ids = [...new Set([...r.commanders, ...r.cards.map((c) => c.oracle_id)])];
   return Response.json({
     name: name ?? null,

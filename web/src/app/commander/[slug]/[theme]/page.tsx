@@ -7,12 +7,13 @@ import {
   type ScoredCard,
 } from "@edh-tool/engine";
 import { CardImage } from "@/components/CardImage";
+import { HighImpactPool, type PoolRow } from "@/components/HighImpactPool";
 import { StartThemeDeckButton } from "@/components/deck/StartThemeDeckButton";
 import { TagChip } from "@/components/TagChip";
 import { getCommander, getVocab, hydrate } from "@/lib/data";
 import { tagLabel } from "@/lib/labels";
 
-// Rendered per request: the reroll number (?r=) picks a different seeded batch.
+// Rendered per request: ?all=1 shows the whole candidate pool, ?debug=1 the scoring table.
 export async function generateMetadata({
   params,
 }: PageProps<"/commander/[slug]/[theme]">) {
@@ -37,23 +38,82 @@ export default async function ThemePage({
   const theme = data?.themes.find((t) => t.id === themeId);
   if (!data || !theme) notFound();
 
-  const reroll = Math.max(0, Number.parseInt(one(sp.r) ?? "0", 10) || 0);
+  const all = one(sp.all) === "1";
   const debug = one(sp.debug) === "1";
   const { picks, eligible } = recommend(
     data.index,
     data.entry,
     theme,
     DEFAULT_CONFIG,
-    { deckSeed: "anon", reroll },
+    { deckSeed: "anon", reroll: 0 },
   );
-  const ranked = debug
-    ? rankTheme(data.index, data.entry, theme).slice(
-        0,
-        DEFAULT_CONFIG.candidates.poolSize,
-      )
+  const poolSize = DEFAULT_CONFIG.candidates.poolSize;
+  const ranked =
+    all || debug
+      ? rankTheme(data.index, data.entry, theme).slice(0, poolSize)
+      : [];
+  const q = (p: { all?: boolean; debug?: boolean }) => {
+    const qs = [p.all && "all=1", p.debug && "debug=1"].filter(Boolean);
+    return qs.length ? `?${qs.join("&")}` : "?";
+  };
+  const extra = await hydrate((all ? ranked : picks).map((p) => p.oracle_id)); // the pool leaves images/links out
+  const pickedIds = new Set(picks.map((p) => p.oracle_id));
+  const rows: PoolRow[] = all
+    ? ranked.map((r) => {
+        const card = data.index.get(r.oracle_id)!.card;
+        const ex = extra.get(r.oracle_id);
+        const ill = r.parts.illustration;
+        return {
+          id: r.oracle_id,
+          name: r.name,
+          image: ill?.image ?? ex?.image,
+          href: ex?.scryfall_uri,
+          types: card.types,
+          colors: card.color_identity,
+          price: card.price_usd != null ? Number(card.price_usd) : null,
+          rank: card.edhrec_rank ?? null,
+          artist: ill?.artist,
+          gem: r.parts.obscurity >= GEM_OBSCURITY,
+          picked: pickedIds.has(r.oracle_id),
+          score: r.score,
+          fit: r.parts.fit,
+          commander: r.parts.commanderMult,
+          quality: r.parts.quality,
+          popularity: r.parts.popularityMult,
+          art: r.parts.artMult,
+          tags: r.parts.matched
+            .filter((m) => m.contrib > 0)
+            .map((m) => ({
+              tag: m.tag,
+              anchor: m.anchor,
+              detail: m.role,
+            })),
+        };
+      })
     : [];
-  const q = (r: number) => `?r=${r}${debug ? "&debug=1" : ""}`;
-  const extra = await hydrate(picks.map((p) => p.oracle_id)); // the pool leaves images/links out
+
+  // Sits above the picks, or inside the filter panel when the whole pool is shown.
+  const heading = (
+    <div className="flex items-center justify-between gap-4">
+      <div>
+        <h2 className="text-xl font-semibold tracking-tight">
+          High Impact Cards
+        </h2>
+        <p className="text-sm text-zinc-500">
+          {all
+            ? `The top ${Math.min(eligible, poolSize)} of ${eligible} cards that fit`
+            : `${picks.length} picks from the top ${Math.min(eligible, poolSize)} of ${eligible} cards that fit`}
+        </p>
+      </div>
+      <Link
+        href={all ? q({ debug }) : q({ all: true, debug })}
+        scroll={false}
+        className="shrink-0 rounded-lg bg-lime-400 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-lime-300"
+      >
+        {all ? "Back to Top Picks" : "View All High Impact Cards"}
+      </Link>
+    </div>
+  );
 
   return (
     <div className="space-y-8">
@@ -87,38 +147,28 @@ export default async function ThemePage({
         <StartThemeDeckButton slug={slug} themeId={themeId} className="pt-2" />
       </div>
 
-      <div className="flex items-center justify-between gap-4">
-        <h2 className="text-xl font-semibold tracking-tight">
-          High Impact Cards
-          <p className="text-sm text-zinc-500">
-            {picks.length} picks from the top{" "}
-            {Math.min(eligible, DEFAULT_CONFIG.candidates.poolSize)} of{" "}
-            {eligible} cards that fit
-          </p>
-        </h2>
-        <Link
-          href={q(reroll + 1)}
-          className="rounded-lg bg-lime-400 px-4 py-2 text-sm font-medium text-zinc-950 transition hover:bg-lime-300"
-        >
-          Reroll
-        </Link>
-      </div>
-
-      <ul className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
-        {picks.map((p) => (
-          <Pick key={p.oracle_id} pick={p} data={data} extra={extra.get(p.oracle_id)} />
-        ))}
-      </ul>
-
-      {debug && (
-        <DebugTable
-          ranked={ranked}
-          picked={new Set(picks.map((p) => p.oracle_id))}
-        />
+      {all ? (
+        <HighImpactPool rows={rows} header={heading} />
+      ) : (
+        <>
+          {heading}
+          <ul className="grid grid-cols-2 gap-5 md:grid-cols-3 lg:grid-cols-5">
+            {picks.map((p) => (
+              <Pick
+                key={p.oracle_id}
+                pick={p}
+                data={data}
+                extra={extra.get(p.oracle_id)}
+              />
+            ))}
+          </ul>
+        </>
       )}
+
+      {debug && <DebugTable ranked={ranked} picked={pickedIds} />}
       {!debug && (
         <Link
-          href={`?r=${reroll}&debug=1`}
+          href={q({ all, debug: true })}
           className="block text-xs text-zinc-600 hover:text-zinc-400"
         >
           Show scoring details
@@ -154,12 +204,7 @@ function Pick({
           </span>
         )}
         {why.map((m) => (
-          <TagChip
-            key={m.tag}
-            tag={m.tag}
-            strong={m.anchor}
-            detail={m.role === "both" ? undefined : m.role}
-          />
+          <TagChip key={m.tag} tag={m.tag} strong={m.anchor} detail={m.role} />
         ))}
       </div>
       <p className="text-xs text-zinc-500">

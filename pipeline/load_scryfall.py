@@ -159,10 +159,17 @@ def iter_bulk(path: Path):
                     yield json.loads(line)
 
 
+def is_paper(c: dict) -> bool:
+    """Printed on paper at some point. Digital-only sets (Alchemy, "Through the Omenpaths") are MTGO/Arena
+    only, and sometimes re-skin a paper card under another name, so the site ignores them."""
+    return "paper" in (c.get("games") or ["paper"])
+
+
 def _printing_rank(c: dict) -> tuple:
     """Higher is better: which printing represents the card (flavor text, image)."""
     return (
-        c.get("lang", "en") == "en",     # English printings first: the site shows English card art
+        is_paper(c),                     # paper printings first
+        c.get("lang", "en") == "en",     # then English: the site shows English card art
         not c.get("digital", False),
         c.get("set_type") not in ("funny", "memorabilia", "token", "minigame", "alchemy"),
         not c.get("promo", False),
@@ -184,7 +191,7 @@ def dedupe_printings(cards, art_sink: dict | None = None) -> list[dict]:
         if not oid:
             continue
         c["oracle_id"] = oid
-        if art_sink is not None and c.get("lang", "en") == "en":   # no Japanese/Spanish/... alternate art
+        if art_sink is not None and c.get("lang", "en") == "en" and is_paper(c):   # English paper art only
             for a in art_records(c):
                 key = (a["oracle_id"], a["illustration_id"])
                 prev = art_sink.get(key)
@@ -199,7 +206,7 @@ def dedupe_printings(cards, art_sink: dict | None = None) -> list[dict]:
     for oid, c in best.items():
         if oid in cheapest:
             c.setdefault("prices", {})["usd"] = f"{cheapest[oid]:.2f}"
-    return list(best.values())
+    return [c for c in best.values() if is_paper(c)]    # cards that never had a paper printing are dropped
 
 
 def main(argv=None):
